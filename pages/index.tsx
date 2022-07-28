@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 
-import { Htag, Button } from '../components';
+import { Htag, Button, P } from '../components';
 
 const Home: NextPage = (): JSX.Element => {
   return (
