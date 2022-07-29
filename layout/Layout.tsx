@@ -8,14 +8,12 @@ import { Sidebar } from './Sidebar/Sidebar';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
-    <>
-      <Header />
-      <div>
-        <Sidebar />
-        <div className={styles.content}>{children}</div>
-      </div>
-      <Footer />
-    </>
+    <div className={styles.layout}>
+      <Header className={styles.header} />
+      <Sidebar className={styles.sidebar} />
+      <div className={styles.content}>{children}</div>
+      <Footer className={styles.footer} />
+    </div>
   );
 };
 
