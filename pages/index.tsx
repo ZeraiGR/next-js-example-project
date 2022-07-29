@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import React from 'react';
 
 import { Htag, Button, P, Tag, Rating } from '../components';
+import { withLayout } from '../layout/Layout';
 
 const Home: NextPage = (): JSX.Element => {
   const [rating, setRating] = React.useState(3);
@@ -31,9 +32,9 @@ const Home: NextPage = (): JSX.Element => {
       <Tag size="big" appearance="red">
         hh.ru
       </Tag>
-      <Rating rating={rating} isEditable={true} setRating={setRating} />
+      <Rating rating={rating} />
     </>
   );
 };
 
-export default Home;
+export default withLayout(Home);
