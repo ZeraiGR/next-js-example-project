@@ -1,10 +1,17 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import React from 'react';
+import axios from 'axios';
 
+import { MenuItem } from '../interfaces/menu.interface';
 import { Htag, Button, P, Tag, Rating } from '../components';
 import { withLayout } from '../layout/Layout';
 
-const Home: NextPage = (): JSX.Element => {
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[];
+  firstCategory: number;
+}
+
+const Home: NextPage<HomeProps> = ({ menu, firstCategory }): JSX.Element => {
   const [rating, setRating] = React.useState(3);
 
   return (
@@ -16,7 +23,7 @@ const Home: NextPage = (): JSX.Element => {
       <Button appearance="ghost" arrow="down">
         Читать отзывы
       </Button>
-      <P>
+      <P size={14}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quas rerum laborum, nostrum
         recusandae tenetur!
       </P>
@@ -33,8 +40,31 @@ const Home: NextPage = (): JSX.Element => {
         hh.ru
       </Tag>
       <Rating rating={rating} />
+      <ul>
+        {menu.map((m) => (
+          <li key={m._id.secondCategory}>{m._id.secondCategory}</li>
+        ))}
+      </ul>
     </>
   );
 };
 
 export default withLayout(Home);
+
+// Вызывается только на сервере! На клиенте в бандл этот код не попадёт!
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const firstCategory = 0;
+  const { data: menu } = await axios.post<MenuItem[]>(
+    process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
+    {
+      firstCategory,
+    },
+  );
+
+  return {
+    props: {
+      menu,
+      firstCategory,
+    },
+  };
+};
