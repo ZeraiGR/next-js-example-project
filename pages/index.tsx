@@ -12,7 +12,7 @@ interface HomeProps extends Record<string, unknown> {
 }
 
 const Home: NextPage<HomeProps> = ({ menu, firstCategory }): JSX.Element => {
-  const [rating, setRating] = React.useState(3);
+  const [rating, setRating] = React.useState<number>(3);
 
   return (
     <>

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
+import { AppContext } from '../context/app-context';
 import { LayoutProps } from './Layout.props';
 import styles from './Layout.module.scss';
 import { Header } from './Header/Header';

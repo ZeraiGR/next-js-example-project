@@ -12,7 +12,11 @@ export const Rating = ({
   className,
   ...props
 }: RatingProps): JSX.Element => {
-  const [ratingArr, setRatingArr] = React.useState<JSX.Element[]>(new Array(5).fill(<></>));
+  const [ratingArr, setRatingArr] = React.useState<JSX.Element[]>(
+    new Array(5)
+      .fill(<></>)
+      .map((el: JSX.Element, i: number) => <React.Fragment key={i}></React.Fragment>),
+  );
 
   React.useEffect(() => {
     constructRating(rating);
@@ -39,8 +43,8 @@ export const Rating = ({
   const constructRating = (currentRating: number) => {
     const handledRatingArr = ratingArr.map((r: JSX.Element, i: number) => (
       <li
-        className={cn(styles.rate, { [styles.isEdit]: isEditable })}
         key={i}
+        className={cn(styles.rate, { [styles.isEdit]: isEditable })}
         onMouseEnter={() => showRating(i + 1)}
         onMouseLeave={() => showRating(rating)}
         onClick={() => setRatingWithMouse(i + 1)}>
