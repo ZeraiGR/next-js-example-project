@@ -28,6 +28,13 @@ export interface Learningclub {
   _id: string;
 }
 
+export enum TopCategory {
+  Courses,
+  Services,
+  Books,
+  Products,
+}
+
 export interface PageModel {
   _id: string;
   tags: string[];
@@ -39,7 +46,7 @@ export interface PageModel {
   tagsTitle: string;
   metaTitle: string;
   metaDescription: string;
-  firstCategory: number;
+  firstCategory: TopCategory;
   advantages: PageAdvantage[];
   createdAt: Date;
   updatedAt: Date;

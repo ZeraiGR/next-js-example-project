@@ -1,13 +1,14 @@
 import { MenuItem } from '../interfaces/menu.interface';
 import { createContext, PropsWithChildren, useState } from 'react';
+import { TopCategory } from '../interfaces/page.interface';
 
 export interface Icontext {
   menu: MenuItem[];
-  firstCategory: number;
+  firstCategory: TopCategory;
   setMenu?: (menu: MenuItem[]) => void;
 }
 
-export const AppContext = createContext<Icontext>({ menu: [], firstCategory: 0 });
+export const AppContext = createContext<Icontext>({ menu: [], firstCategory: TopCategory.Courses });
 
 export const AppContextProvider = ({
   menu,
