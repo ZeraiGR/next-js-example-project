@@ -1,0 +1,10 @@
+.link {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.logoIcon {
+  &:focus-visible {
+    outline-color: var(--orange);
+  }
+}

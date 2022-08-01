@@ -12,7 +12,7 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
         Поиск...
       </label>
       <input id="search" className={styles.input} type="search" placeholder="Поиск..." />
-      <button type="submit">
+      <button className={styles.btnIcon} type="submit">
         <SearchIcon />
       </button>
     </div>

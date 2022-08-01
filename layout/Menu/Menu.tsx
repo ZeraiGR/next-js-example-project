@@ -1,26 +1,36 @@
 import React from 'react';
 import cn from 'classnames';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import { TopCategory } from '../../interfaces/page.interface';
 import { AppContext } from '../../context/app-context';
 import { FirstLevelMenuItem, MenuItem } from '../../interfaces/menu.interface';
-import styles from './Menu.module.scss';
-
-import CoursesIcon from './icons/icon-graduate.svg';
-import ServicesIcon from './icons/icon-services.svg';
-import BooksIcon from './icons/icon-books.svg';
-import ProductsIcon from './icons/icon-products.svg';
 import { Search } from '../../components';
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-  { id: TopCategory.Courses, route: 'courses', name: 'Курсы', icon: <CoursesIcon /> },
-  { id: TopCategory.Services, route: 'services', name: 'Сервисы', icon: <ServicesIcon /> },
-  { id: TopCategory.Books, route: 'books', name: 'Книги', icon: <BooksIcon /> },
-  { id: TopCategory.Products, route: 'products', name: 'Товары', icon: <ProductsIcon /> },
-];
+import { firstLevelMenu } from '../../utils/template-menu';
+import styles from './Menu.module.scss';
 
 export const Menu = (): JSX.Element => {
   const { menu, firstCategory, setMenu } = React.useContext(AppContext);
+  const router = useRouter();
+  console.log(router.asPath);
+
+  React.useEffect(() => {
+    // Todo пофиксить меню при переходе между верхними уровнями!
+    // setMenu && setMenu(menu);
+    console.log('change route');
+  }, [router.asPath]);
+
+  const onChangeSecondMenu = (secondCategory: string) => {
+    setMenu &&
+      setMenu(
+        menu.map((item) => {
+          if (secondCategory === item._id.secondCategory) {
+            item.isOpen = !item.isOpen;
+          }
+          return item;
+        }),
+      );
+  };
 
   const renderFirstLevelMenu = () => {
     return firstLevelMenu.map((m) => (
@@ -32,7 +42,9 @@ export const Menu = (): JSX.Element => {
         <>
           <div className={styles.firstLevelLabel}>
             {m.icon}
-            <a href={`/${m.route}`}>{m.name}</a>
+            <Link href={`/${m.route}`}>
+              <a>{m.name}</a>
+            </Link>
           </div>
           <ul className={styles.secondLevelMenu}>
             {m.id === firstCategory && renderSecondLevelMenu(m)}
@@ -43,26 +55,42 @@ export const Menu = (): JSX.Element => {
   };
 
   const renderSecondLevelMenu = (firstMenuItem: FirstLevelMenuItem) => {
-    return menu.map((item) => (
-      <li
-        className={cn(styles.secondLevelItem, { [styles.open]: item.isOpen })}
-        key={item._id.secondCategory}>
-        <>
-          <span>{item._id.secondCategory}</span>
-          <ul className={styles.thirdLevelMenu}>
-            {renderThirdLevelMenu(item, firstMenuItem.route)}
-          </ul>
-        </>
-      </li>
-    ));
+    return menu.map((item) => {
+      const alias = router.query.alias ? router.query.alias.toString() : '';
+
+      if (item.pages.map((p) => p.alias).includes(alias)) {
+        item.isOpen = true;
+      }
+
+      return (
+        <li
+          className={cn(styles.secondLevelItem, { [styles.open]: item.isOpen })}
+          key={item._id.secondCategory}>
+          <>
+            <button type="button" onClick={() => onChangeSecondMenu(item._id.secondCategory)}>
+              {item._id.secondCategory}
+            </button>
+            <ul className={styles.thirdLevelMenu}>
+              {renderThirdLevelMenu(item, firstMenuItem.route)}
+            </ul>
+          </>
+        </li>
+      );
+    });
   };
 
   const renderThirdLevelMenu = (secondMenuItem: MenuItem, route: string) => {
-    return secondMenuItem.pages.map((page) => (
-      <li className={cn(styles.thirdLevelItem, { [styles.active]: false })} key={page._id}>
-        <a href={`/${route}/${page.alias}`}>{page.title}</a>
-      </li>
-    ));
+    return secondMenuItem.pages.map((page) => {
+      const isActive = `/${route}/${page.alias}` === router.asPath;
+
+      return (
+        <li className={cn(styles.thirdLevelItem, { [styles.active]: isActive })} key={page._id}>
+          <Link href={`/${route}/${page.alias}`}>
+            <a>{page.title}</a>
+          </Link>
+        </li>
+      );
+    });
   };
 
   return (

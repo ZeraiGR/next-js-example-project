@@ -1,4 +1,4 @@
-export interface CourseBlog {
+export interface ProductBlog {
   text: string;
   _id: string;
   bigImage?: string;
@@ -11,7 +11,7 @@ export enum Name {
   Школа = 'Школа',
 }
 
-export interface CourseCharacteristic {
+export interface ProductCharacteristic {
   name: Name;
   value: string;
 }
@@ -25,7 +25,7 @@ export interface ReviewModel {
   createdAt: Date;
 }
 
-export interface CourseModel {
+export interface ProductModel {
   _id: string;
   categories: string[];
   tags: string[];
@@ -36,14 +36,14 @@ export interface CourseModel {
   price: number;
   credit: number;
   oldPrice: number;
-  characteristics: CourseCharacteristic[];
+  characteristics: ProductCharacteristic[];
   advantages?: string;
   initialRating: number;
   createdAt: Date;
   updatedAt: Date;
   __v: number;
   html: string;
-  blog: CourseBlog;
+  blog: ProductBlog;
   companyId: string;
   clicks: number;
   reviews: ReviewModel[];
