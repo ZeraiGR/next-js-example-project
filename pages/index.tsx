@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 
 import { MenuItem } from '../interfaces/menu.interface';
-import { Htag, Button, P, Tag, Rating } from '../components';
+import { Htag, Button, P, Tag, Rating, Input, Textarea } from '../components';
 import { withLayout } from '../layout/Layout';
 
 interface HomeProps extends Record<string, unknown> {
@@ -40,6 +40,8 @@ const Home: NextPage<HomeProps> = ({ menu, firstCategory }): JSX.Element => {
         hh.ru
       </Tag>
       <Rating rating={rating} />
+      <Input placeholder="Имя" />
+      <Textarea placeholder="Имя" />
     </>
   );
 };

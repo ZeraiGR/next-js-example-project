@@ -1,6 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 import React from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 import { MenuItem } from '../interfaces/menu.interface';
 import { Htag } from '../components';
@@ -12,9 +13,11 @@ interface SearchProps extends Record<string, unknown> {
 }
 
 const Search: NextPage<SearchProps> = ({ menu, firstCategory }): JSX.Element => {
+  const router = useRouter();
+
   return (
     <>
-      <Htag tag="h1">Поиск по сайту</Htag>
+      <Htag tag="h1">Поиск по запросу: {router.query.q}</Htag>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export interface SearchProps
-  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}

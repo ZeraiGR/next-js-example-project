@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export interface RateProps
-  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLUListElement>, HTMLUListElement> {
+  extends DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement> {
   value: 1 | 2 | 3;
 }
