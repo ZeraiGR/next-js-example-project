@@ -1,0 +1,87 @@
+.header {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 3.5fr;
+  gap: 30px;
+
+  @media (max-width: 1366px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.stat {
+  padding: 20px 20px 30px;
+  text-align: center;
+}
+
+.title,
+.value {
+  display: block;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 300;
+
+  @media (max-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+.value {
+  color: var(--accent);
+  font-size: 36px;
+  font-weight: 700;
+
+  @media (max-width: 1024px) {
+    font-size: 32px;
+  }
+}
+
+.salary {
+  margin-bottom: 12px;
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+
+  @media (max-width: 1024px) {
+    font-size: 24px;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px 20px 18px;
+  row-gap: 20px;
+
+  & > li {
+    height: 100%;
+    text-align: center;
+
+    &:not(:first-child) {
+      border-left: 1px solid var(--gray-light);
+
+      @media (max-width: 972px) {
+        border-left: none;
+        border-top: 1px solid var(--gray-light);
+        padding-top: 15px;
+      }
+    }
+  }
+
+  .title {
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 972px) {
+    grid-template-columns: 100%;
+  }
+}

@@ -7,19 +7,19 @@ import { PageModel, TopCategory } from '../../interfaces/page.interface';
 import { ProductModel } from '../../interfaces/course.interface';
 import { MenuItem } from '../../interfaces/menu.interface';
 import { withLayout } from '../../layout/Layout';
-
-interface ProductProps extends Record<string, unknown> {
+import { TopPageComponent } from '../../page-components';
+interface TopPageProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: TopCategory;
   page: PageModel;
   products: ProductModel[];
 }
 
-const Product: NextPage<ProductProps> = ({ menu, firstCategory, page, products }): JSX.Element => {
-  return <div>{products && products.length}</div>;
+const TopPage: NextPage<TopPageProps> = ({ firstCategory, page, products }): JSX.Element => {
+  return <TopPageComponent firstCategory={firstCategory} page={page} products={products} />;
 };
 
-export default withLayout(Product);
+export default withLayout(TopPage);
 
 export const getStaticPaths: GetStaticPaths = async ({ params }: GetStaticPropsContext) => {
   let paths: string[] = [];
@@ -42,7 +42,7 @@ export const getStaticPaths: GetStaticPaths = async ({ params }: GetStaticPropsC
   };
 };
 
-export const getStaticProps: GetStaticProps<ProductProps> = async ({
+export const getStaticProps: GetStaticProps<TopPageProps> = async ({
   params,
 }: GetStaticPropsContext) => {
   if (!params) {

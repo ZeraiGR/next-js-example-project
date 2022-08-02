@@ -12,13 +12,6 @@ import styles from './Menu.module.scss';
 export const Menu = (): JSX.Element => {
   const { menu, firstCategory, setMenu } = React.useContext(AppContext);
   const router = useRouter();
-  console.log(router.asPath);
-
-  React.useEffect(() => {
-    // Todo пофиксить меню при переходе между верхними уровнями!
-    // setMenu && setMenu(menu);
-    console.log('change route');
-  }, [router.asPath]);
 
   const onChangeSecondMenu = (secondCategory: string) => {
     setMenu &&

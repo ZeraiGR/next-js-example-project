@@ -1,0 +1,14 @@
+.sort {
+  display: flex;
+  align-items: center;
+
+  li:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+
+.btn {
+  svg {
+    margin-right: 8px;
+  }
+}

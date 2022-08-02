@@ -17,8 +17,8 @@ export interface DataHH {
   juniorSalary: number;
   middleSalary: number;
   seniorSalary: number;
-  updatedAt: Date;
-  _id: string;
+  updatedAt?: Date;
+  _id?: string;
 }
 
 export interface Learningclub {

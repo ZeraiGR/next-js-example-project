@@ -1,0 +1,12 @@
+.header {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
