@@ -8,7 +8,20 @@
 }
 
 .btn {
+  display: flex;
+  align-items: center;
+
   svg {
+    display: none;
     margin-right: 8px;
+  }
+
+  &.active {
+    color: var(--accent);
+    font-weight: 700;
+
+    svg {
+      display: block;
+    }
   }
 }

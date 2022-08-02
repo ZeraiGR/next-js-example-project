@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 
 import { HHdataProps } from './HHdata.props';
 import styles from './HHdata.module.scss';
@@ -9,13 +10,14 @@ import { Rate } from '../Rate/Rate';
 import { numWithSpaces, priceRu } from '../../utils/format-numbers';
 
 export const HHdata = ({
+  className,
   count,
   juniorSalary,
   middleSalary,
   seniorSalary,
 }: HHdataProps): JSX.Element => {
   return (
-    <div className={styles.data}>
+    <div className={cn(className, styles.data)}>
       <div className={styles.header}>
         <Htag tag="h2">Вакансии - Photoshop</Htag>
         <Tag size="small" appearance="red">

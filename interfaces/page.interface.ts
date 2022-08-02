@@ -42,7 +42,7 @@ export interface PageModel {
   alias: string;
   title: string;
   category: string;
-  seoText: string;
+  seoText?: string;
   tagsTitle: string;
   metaTitle: string;
   metaDescription: string;
@@ -51,7 +51,7 @@ export interface PageModel {
   createdAt: Date;
   updatedAt: Date;
   __v: number;
-  hh: DataHH;
+  hh?: DataHH;
   qas: any[];
   addresses: any[];
   categoryOn: string;
