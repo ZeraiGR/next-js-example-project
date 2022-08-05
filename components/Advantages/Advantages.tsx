@@ -15,7 +15,7 @@ export const Advantages = ({ className, title, advantages }: AdvantagesProps): J
       </Htag>
       <ul className={styles.list}>
         {advantages.map((a) => (
-          <li className={styles.item}>
+          <li className={styles.item} key={a.title}>
             <Htag tag="h3" className={styles.title}>
               <CheckIcon />
               {a.title}

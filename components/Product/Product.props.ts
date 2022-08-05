@@ -1,7 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import { DataHH } from '../../interfaces/page.interface';
-export interface HHdataProps
+import { ProductModel } from '../../interfaces/course.interface';
+
+export interface ProductProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  data: DataHH;
-  className?: string;
+  product: ProductModel;
 }

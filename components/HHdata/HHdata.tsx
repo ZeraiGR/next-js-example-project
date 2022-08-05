@@ -9,13 +9,9 @@ import { Card } from '../Card/Card';
 import { Rate } from '../Rate/Rate';
 import { numWithSpaces, priceRu } from '../../utils/format-numbers';
 
-export const HHdata = ({
-  className,
-  count,
-  juniorSalary,
-  middleSalary,
-  seniorSalary,
-}: HHdataProps): JSX.Element => {
+export const HHdata = ({ className, data }: HHdataProps): JSX.Element => {
+  const { count, juniorSalary, middleSalary, seniorSalary } = data;
+
   return (
     <div className={cn(className, styles.data)}>
       <div className={styles.header}>

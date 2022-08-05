@@ -2,7 +2,13 @@
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: auto auto;
+  gap: 50px;
   justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 .info {
@@ -14,6 +20,12 @@
 .products,
 .job {
   margin-bottom: 50px;
+}
+
+.product {
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
 }
 
 .advantages,

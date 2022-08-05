@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { sortReducer } from '../../components/Sort/sort.reducer';
-import { HHdata, Htag, P, Tag } from '../../components';
+import { sortInit, sortReducer } from '../../components/Sort/sort.reducer';
+import { HHdata, Htag, Product, Tag } from '../../components';
 import { Advantages } from '../../components/Advantages/Advantages';
 import { Sort } from '../../components/Sort/Sort';
 import { SortEnum } from '../../components/Sort/Sort.props';
@@ -10,10 +10,18 @@ import { TopPageComponentProps } from './TopPage.component.props';
 import styles from './TopPage.component.module.scss';
 
 export const TopPageComponent = ({ firstCategory, products, page }: TopPageComponentProps) => {
-  const [{ products: sortedProducts, sort }, dispatch] = React.useReducer(sortReducer, {
-    sort: SortEnum.Rating,
-    products,
-  });
+  const [{ products: sortedProducts, sort }, dispatch] = React.useReducer(
+    sortReducer,
+    {
+      sort: SortEnum.Rating,
+      products,
+    },
+    sortInit,
+  );
+
+  React.useEffect(() => {
+    dispatch({ type: 'update', payload: { sort, products } });
+  }, [products, sort]);
 
   const setSort = (sort: SortEnum) => {
     dispatch({ type: sort });
@@ -36,19 +44,15 @@ export const TopPageComponent = ({ firstCategory, products, page }: TopPageCompo
       {sortedProducts && (
         <ul className={styles.products}>
           {sortedProducts.map((p) => (
-            <li key={p._id}>{p.title}</li>
+            <li key={p._id} className={styles.product}>
+              <Product product={p} />
+            </li>
           ))}
         </ul>
       )}
 
       {firstCategory === TopCategory.Courses && page.hh && (
-        <HHdata
-          className={styles.job}
-          count={page.hh.count}
-          juniorSalary={page.hh.juniorSalary}
-          middleSalary={page.hh.middleSalary}
-          seniorSalary={page.hh.seniorSalary}
-        />
+        <HHdata className={styles.job} data={page.hh} />
       )}
 
       {page.advantages && page.advantages.length > 0 && page.advantages[0].title && (

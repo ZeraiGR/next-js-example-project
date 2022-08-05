@@ -1,12 +1,12 @@
 import React from 'react';
 import cn from 'classnames';
+import { useRouter } from 'next/router';
 
 import SearchIcon from './icon-search.svg';
 import { SearchProps } from './Search.props';
 import styles from './Search.module.scss';
 import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
-import { useRouter } from 'next/router';
 
 export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
   const [search, setSearch] = React.useState('');
