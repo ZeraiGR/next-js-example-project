@@ -69,6 +69,7 @@
     }
 
     .characteristics {
+      margin-bottom: 20px;
       grid-area: characteristics;
     }
 
@@ -331,5 +332,25 @@
   strong {
     margin-bottom: 3px;
     display: block;
+  }
+}
+
+.reviews {
+  padding: 30px;
+  transform: translateY(-5px);
+
+  &.show {
+    overflow: visible;
+    max-height: auto;
+  }
+
+  &.hide {
+    overflow: hidden;
+    max-height: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 414px) {
+    padding: 20px 10px;
   }
 }

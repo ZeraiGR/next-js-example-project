@@ -11,6 +11,7 @@ import { Tag } from '../Tag/Tag';
 import { Rating } from '../Rating/Rating';
 import { Button } from '../Button/Button';
 import { declOfNum } from '../../utils/declination-of-numbers';
+import { Review } from '../Review/Review';
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
   const {
@@ -28,7 +29,9 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
     advantages,
     disadvantages,
     reviewCount,
+    reviews,
   } = product;
+  const [isShowReviews, setIsShowReviews] = React.useState<boolean>(false);
 
   const discount = price && oldPrice ? Math.round((price - oldPrice) / 1000) * 1000 : null;
 
@@ -147,11 +150,28 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
             <Button appearance="primary">Узнать подробнее</Button>
           </li>
           <li>
-            <Button appearance="ghost" arrow="right">
+            <Button
+              onClick={() => setIsShowReviews(!isShowReviews)}
+              appearance="ghost"
+              arrow={isShowReviews ? 'down' : 'right'}>
               Читать отзывы
             </Button>
           </li>
         </ul>
+      </Card>
+      <Card
+        className={cn(styles.reviews, {
+          [styles.show]: isShowReviews,
+          [styles.hide]: !isShowReviews,
+        })}
+        appearance="gray">
+        {reviews && (
+          <ul className={styles.revlist}>
+            {reviews.map((r) => (
+              <Review key={r._id} review={r} />
+            ))}
+          </ul>
+        )}
       </Card>
     </article>
   );
