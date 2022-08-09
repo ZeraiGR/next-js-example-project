@@ -1,6 +1,7 @@
 export * from './Advantages/Advantages';
 export * from './Button/Button';
 export * from './Card/Card';
+export * from './Divider/Divider';
 export * from './HHdata/HHdata';
 export * from './Htag/Htag';
 export * from './Input/Input';
@@ -9,6 +10,7 @@ export * from './Product/Product';
 export * from './Rate/Rate';
 export * from './Rating/Rating';
 export * from './Review/Review';
+export * from './ReviewForm/ReviewForm';
 export * from './Search/Search';
 export * from './Sort/Sort';
 export * from './Tag/Tag';

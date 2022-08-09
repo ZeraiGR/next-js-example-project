@@ -1,0 +1,71 @@
+.form {
+  margin-bottom: 20px;
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: [start] auto 1fr auto [end];
+  gap: 20px 30px;
+
+  @media (max-width: 1366px) {
+    grid-template-columns: [start] auto auto [end];
+  }
+
+  @media (max-width: 972px) {
+    grid-template-columns: [start] 1fr [end];
+  }
+}
+
+.title {
+  justify-self: flex-start;
+
+  @media (max-width: 1366px) {
+    justify-self: normal;
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+
+  @media (max-width: 1366px) {
+    grid-column: start / end;
+  }
+}
+
+.textarea {
+  grid-column: start / end;
+}
+
+.submit {
+  grid-column: start / end;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 972px) {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+.btn {
+  margin-right: 15px;
+}
+
+.successTitle {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.succesDescr {
+  font-size: 14px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}

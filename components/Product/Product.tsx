@@ -12,9 +12,12 @@ import { Rating } from '../Rating/Rating';
 import { Button } from '../Button/Button';
 import { declOfNum } from '../../utils/declination-of-numbers';
 import { Review } from '../Review/Review';
+import { Divider } from '../Divider/Divider';
+import { ReviewForm } from '../ReviewForm/ReviewForm';
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
   const {
+    _id,
     title,
     image,
     price,
@@ -94,9 +97,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
           {reviewCount} {declOfNum(reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
         </div>
 
-        <div className={styles.headerDivider}>
-          <hr />
-        </div>
+        <Divider className={styles.headerDivider} />
 
         <div className={styles.description}>{description}</div>
 
@@ -141,9 +142,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
           )}
         </div>
 
-        <div className={styles.btnsDivider}>
-          <hr />
-        </div>
+        <Divider className={styles.btnsDivider} />
 
         <ul className={styles.buttons}>
           <li>
@@ -168,10 +167,14 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
         {reviews && (
           <ul className={styles.revlist}>
             {reviews.map((r) => (
-              <Review key={r._id} review={r} />
+              <>
+                <Review key={r._id} review={r} />
+                <Divider />
+              </>
             ))}
           </ul>
         )}
+        <ReviewForm productId={_id} />
       </Card>
     </article>
   );

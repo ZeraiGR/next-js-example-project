@@ -201,14 +201,7 @@
 
 .headerDivider,
 .btnsDivider {
-  margin-top: 18px;
-  margin-bottom: 22px;
   grid-column: start / end;
-
-  hr {
-    height: 1px;
-    background-color: var(--gray-light);
-  }
 }
 
 .headerDivider {

@@ -1,10 +1,9 @@
 import React from 'react';
-import cn from 'classnames';
 
 import { ReviewProps } from './Review.props';
 import styles from './Review.module.scss';
-import format from 'date-fns/format';
-import ru from 'date-fns/esm/locale/ru';
+import { format } from 'date-fns';
+import { ru } from 'date-fns/locale';
 import UserIcon from './icon-user.svg';
 import { Rating } from '../Rating/Rating';
 
