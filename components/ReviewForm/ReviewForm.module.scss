@@ -3,7 +3,7 @@
   padding-top: 10px;
   display: grid;
   grid-template-columns: [start] auto 1fr auto [end];
-  gap: 20px 30px;
+  gap: 30px;
 
   @media (max-width: 1366px) {
     grid-template-columns: [start] auto auto [end];
@@ -68,4 +68,8 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
+}
+
+.error {
+  color: var(--red);
 }

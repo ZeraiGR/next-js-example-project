@@ -1,3 +1,7 @@
+.field {
+  position: relative;
+}
+
 .input {
   max-width: 100%;
   padding: 7px 15px;
@@ -11,4 +15,11 @@
   &::placeholder {
     color: var(--white-dark);
   }
+}
+
+.error {
+  position: absolute;
+  bottom: -28px;
+  left: 5px;
+  color: var(--red);
 }

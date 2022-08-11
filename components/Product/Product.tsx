@@ -167,14 +167,14 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
         {reviews && (
           <ul className={styles.revlist}>
             {reviews.map((r) => (
-              <>
-                <Review key={r._id} review={r} />
+              <React.Fragment key={r._id}>
+                <Review review={r} />
                 <Divider />
-              </>
+              </React.Fragment>
             ))}
           </ul>
         )}
-        <ReviewForm productId={_id} />
+        <ReviewForm productid={_id} />
       </Card>
     </article>
   );
