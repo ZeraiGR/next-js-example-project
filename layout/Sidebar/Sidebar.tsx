@@ -9,7 +9,7 @@ import { Logo } from '../Logo/Logo';
 export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {
   return (
     <aside className={cn(className, styles.sidebar)} {...props}>
-      <Logo />
+      <Logo className={styles.logo} />
       <Menu />
     </aside>
   );

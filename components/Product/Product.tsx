@@ -49,8 +49,8 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
   };
 
   const variants = {
-    hidden: { height: 0, opacity: 0 },
-    show: { height: 'auto', opacity: 1 },
+    hidden: { height: 0 },
+    show: { height: 'auto' },
   };
 
   return (
@@ -176,9 +176,10 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
         </ul>
       </Card>
       <motion.div
+        className={styles.revwrap}
         variants={variants}
         animate={isShowReviews ? 'show' : 'hidden'}
-        initial={'hidden'}>
+        initial={isShowReviews ? 'show' : 'hidden'}>
         <Card className={cn(styles.reviews)} appearance="gray" ref={reviewRef}>
           {reviews && (
             <ul className={styles.revlist}>

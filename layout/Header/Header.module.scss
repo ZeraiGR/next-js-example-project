@@ -1,0 +1,28 @@
+.header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 35px 20px;
+  overflow-y: auto;
+  background-color: var(--white-light);
+}
+
+.close {
+  position: fixed;
+  z-index: 6;
+  top: 35px;
+  right: 20px;
+}

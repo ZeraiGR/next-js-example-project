@@ -111,6 +111,19 @@
   }
 
   @media (max-width: 414px) {
+    grid-template-areas:
+      'logo . title'
+      'tags tags tags'
+      'priceDescr . price'
+      'creditDescr . credit'
+      'reviewCount . rating'
+      'hr hr hr'
+      'description description description'
+      'characteristics characteristics characteristics'
+      'reviews reviews reviews'
+      'hr2 hr2 hr2'
+      'buttons buttons buttons';
+
     padding: 15px 10px 20px;
 
     .priceDescr,
@@ -119,7 +132,12 @@
       margin-top: 10px;
     }
 
+    .title {
+      align-self: center;
+    }
+
     .tags {
+      margin-top: 5px;
       margin-bottom: 15px;
     }
   }
@@ -334,8 +352,11 @@
   }
 }
 
-.reviews {
+.revwrap {
   overflow: hidden;
+}
+
+.reviews {
   padding: 30px;
   transform: translateY(-5px);
 
