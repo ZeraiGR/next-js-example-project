@@ -33,8 +33,27 @@
 
 .content {
   grid-area: content;
+  outline: transparent;
 }
 
 .footer {
   grid-area: footer;
+}
+
+.skipLink {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 12%;
+  border-radius: 4px;
+  background-color: var(--accent);
+  color: var(--white);
+  outline-color: var(--orange);
+  overflow: hidden;
+  height: 0;
+
+  &.focused {
+    height: auto;
+    padding: 5px 10px;
+  }
 }

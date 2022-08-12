@@ -6,11 +6,11 @@ import styles from './Sidebar.module.scss';
 import { Menu } from '../Menu/Menu';
 import { Logo } from '../Logo/Logo';
 
-export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {
+export const Sidebar = ({ className, searchId, ...props }: SidebarProps): JSX.Element => {
   return (
     <aside className={cn(className, styles.sidebar)} {...props}>
       <Logo className={styles.logo} />
-      <Menu />
+      <Menu id={searchId} />
     </aside>
   );
 };

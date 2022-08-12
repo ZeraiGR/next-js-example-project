@@ -48,8 +48,8 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
         className={styles.sidebar}
         variants={variants}
         animate={isOpened ? 'opened' : 'closed'}
-        initial={'closed'}>
-        <Sidebar />
+        initial={isOpened ? 'opened' : 'closed'}>
+        <Sidebar searchId="mobile-search" />
         <ButtonIcon
           className={styles.close}
           appearance="white"

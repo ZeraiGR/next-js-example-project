@@ -9,8 +9,9 @@ import { Search } from '../../components';
 import { firstLevelMenu } from '../../utils/template-menu';
 import styles from './Menu.module.scss';
 import { motion } from 'framer-motion';
+import { MenuProps } from './Menu.props';
 
-export const Menu = (): JSX.Element => {
+export const Menu = ({ id }: MenuProps): JSX.Element => {
   const { menu, firstCategory, setMenu } = React.useContext(AppContext);
   const router = useRouter();
 
@@ -74,7 +75,7 @@ export const Menu = (): JSX.Element => {
           <div className={styles.firstLevelLabel}>
             {m.icon}
             <Link href={`/${m.route}`}>
-              <a>{m.name}</a>
+              <a className={styles.link}>{m.name}</a>
             </Link>
           </div>
           <ul className={styles.secondLevelMenu}>
@@ -102,11 +103,14 @@ export const Menu = (): JSX.Element => {
           initial={item.isOpen ? 'show' : 'hidden'}
           animate={item.isOpen ? 'show' : 'hidden'}>
           <>
-            <button type="button" onClick={() => onChangeSecondMenu(item._id.secondCategory)}>
+            <button
+              className={styles.link}
+              type="button"
+              onClick={() => onChangeSecondMenu(item._id.secondCategory)}>
               {item._id.secondCategory}
             </button>
             <motion.ul className={styles.thirdLevelMenu} variants={variantsMenuList}>
-              {renderThirdLevelMenu(item, firstMenuItem.route)}
+              {renderThirdLevelMenu(item, firstMenuItem.route, item.isOpen ?? false)}
             </motion.ul>
           </>
         </motion.li>
@@ -114,7 +118,7 @@ export const Menu = (): JSX.Element => {
     });
   };
 
-  const renderThirdLevelMenu = (secondMenuItem: MenuItem, route: string) => {
+  const renderThirdLevelMenu = (secondMenuItem: MenuItem, route: string, isOpen: boolean) => {
     return secondMenuItem.pages.map((page) => {
       const isActive = `/${route}/${page.alias}` === router.asPath;
 
@@ -124,7 +128,9 @@ export const Menu = (): JSX.Element => {
           key={page._id}
           variants={variantsChildren}>
           <Link href={`/${route}/${page.alias}`}>
-            <a>{page.title}</a>
+            <a className={styles.link} tabIndex={isOpen ? 0 : -1}>
+              {page.title}
+            </a>
           </Link>
         </motion.li>
       );
@@ -132,9 +138,9 @@ export const Menu = (): JSX.Element => {
   };
 
   return (
-    <>
-      <Search />
+    <div>
+      <Search id={id} />
       <ul className={styles.menu}>{renderFirstLevelMenu()}</ul>
-    </>
+    </div>
   );
 };

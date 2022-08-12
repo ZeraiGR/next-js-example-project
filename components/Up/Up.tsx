@@ -1,12 +1,12 @@
 import React from 'react';
 
 import styles from './Up.module.scss';
-import { motion, useAnimationControls } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useScrollY } from '../../hooks/useScrollY';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 
 export const Up = (): JSX.Element => {
-  const controls = useAnimationControls();
+  const controls = useAnimation();
   const y = useScrollY();
 
   React.useEffect(() => {
@@ -21,13 +21,12 @@ export const Up = (): JSX.Element => {
   };
 
   return (
-    <motion.button
+    <motion.div
       className={styles.button}
       onClick={scrollTop}
-      type="button"
       animate={controls}
       initial={{ opacity: 0 }}>
       <ButtonIcon appearance="primary" icon="up" />
-    </motion.button>
+    </motion.div>
   );
 };

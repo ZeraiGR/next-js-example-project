@@ -11,7 +11,7 @@ export const Review = ({ review, className, ...props }: ReviewProps): JSX.Elemen
   const { name, title, description, rating, createdAt } = review;
 
   return (
-    <li className={styles.review} {...props}>
+    <div className={styles.review} {...props}>
       <UserIcon className={styles.usericon} />
       <div className={styles.author}>
         <strong>{name}:</strong>&nbsp;&nbsp;
@@ -22,6 +22,6 @@ export const Review = ({ review, className, ...props }: ReviewProps): JSX.Elemen
       </div>
       <Rating className={styles.rating} rating={rating} />
       <p className={styles.description}>{description}</p>
-    </li>
+    </div>
   );
 };

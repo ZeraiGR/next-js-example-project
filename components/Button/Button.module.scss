@@ -5,8 +5,6 @@
   font-size: 14px;
   line-height: 1;
   border-radius: 5px;
-  border: 1px solid transparent;
-  outline: transparent;
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease,
     box-shadow 0.3s ease;
 
@@ -38,7 +36,7 @@
   }
 
   &:focus-visible {
-    border-color: var(--orange);
+    outline-color: var(--orange);
   }
 
   &:active {

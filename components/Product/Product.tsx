@@ -65,9 +65,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
           />
         </div>
 
-        <Htag className={styles.title} tag="h3">
-          {title}
-        </Htag>
+        <div className={styles.title}>{title}</div>
 
         <div className={styles.price}>
           <div className={styles.currentPrice}>
@@ -182,14 +180,14 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
         initial={isShowReviews ? 'show' : 'hidden'}>
         <Card className={cn(styles.reviews)} appearance="gray" ref={reviewRef}>
           {reviews && (
-            <ul className={styles.revlist}>
+            <div className={styles.revlist}>
               {reviews.map((r) => (
                 <React.Fragment key={r._id}>
                   <Review review={r} />
                   <Divider />
                 </React.Fragment>
               ))}
-            </ul>
+            </div>
           )}
           <ReviewForm productid={_id} />
         </Card>

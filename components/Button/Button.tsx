@@ -4,7 +4,6 @@ import cn from 'classnames';
 import ArrowIcon from './arrow.svg';
 import { ButtonProps } from './Button.props';
 import styles from './Button.module.scss';
-import { motion } from 'framer-motion';
 
 export const Button = ({
   appearance,
@@ -14,8 +13,7 @@ export const Button = ({
   ...props
 }: ButtonProps): JSX.Element => {
   return (
-    <motion.button
-      whileHover={{ scale: 1.01 }}
+    <button
       className={cn(
         styles.button,
         className,
@@ -34,6 +32,6 @@ export const Button = ({
           <ArrowIcon />
         </span>
       )}
-    </motion.button>
+    </button>
   );
 };

@@ -8,7 +8,7 @@ import styles from './Search.module.scss';
 import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
 
-export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
+export const Search = ({ className, id, ...props }: SearchProps): JSX.Element => {
   const [search, setSearch] = React.useState('');
   const router = useRouter();
 
@@ -37,18 +37,17 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 
   return (
     <div className={cn(styles.search, className)} {...props}>
-      <label className="sr-only" htmlFor="search">
+      <label className="sr-only" htmlFor={id}>
         Поиск...
       </label>
       <Input
-        id="search"
+        id={id}
         placeholder="Поиск..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={goToSearchWithKeyBoard}
         type="search"
       />
-      <button></button>
       <Button className={styles.btnIcon} appearance="primary" type="button" onClick={goToSearch}>
         <SearchIcon />
       </Button>

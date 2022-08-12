@@ -9,8 +9,8 @@ import LogoIcon from '../logo.svg';
 export const Logo = ({ className, ...props }: LogoProps): JSX.Element => {
   return (
     <Link href="/">
-      <a className={styles.link}>
-        <LogoIcon className={cn(className, styles.logoIcon)} {...props} />
+      <a className={cn(styles.link, className)}>
+        <LogoIcon className={cn(styles.logoIcon)} {...props} />
       </a>
     </Link>
   );
