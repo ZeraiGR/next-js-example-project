@@ -6,6 +6,7 @@ import styles from './Layout.module.scss';
 import { Header } from './Header/Header';
 import { Footer } from './Footer/Footer';
 import { Sidebar } from './Sidebar/Sidebar';
+import { Up } from '../components';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
@@ -13,6 +14,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
       <Header className={styles.header} />
       <Sidebar className={styles.sidebar} />
       <div className={styles.content}>{children}</div>
+      <Up />
       <Footer className={styles.footer} />
     </div>
   );
