@@ -8,10 +8,48 @@ import { FirstLevelMenuItem, MenuItem } from '../../interfaces/menu.interface';
 import { Search } from '../../components';
 import { firstLevelMenu } from '../../utils/template-menu';
 import styles from './Menu.module.scss';
+import { motion } from 'framer-motion';
 
 export const Menu = (): JSX.Element => {
   const { menu, firstCategory, setMenu } = React.useContext(AppContext);
   const router = useRouter();
+
+  const variants = {
+    hidden: {
+      marginBottom: 0,
+    },
+    show: {
+      marginBottom: 10,
+    },
+  };
+
+  const variantsMenuList = {
+    hidden: {
+      marginTop: 0,
+      marginBottom: 0,
+    },
+    show: {
+      marginTop: 3,
+      marginBottom: 10,
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const variantsChildren = {
+    hidden: {
+      opacity: 0,
+      height: 0,
+      marginBottom: 0,
+    },
+    show: {
+      opacity: 1,
+      marginBottom: 10,
+      height: 'auto',
+    },
+  };
 
   const onChangeSecondMenu = (secondCategory: string) => {
     setMenu &&
@@ -56,18 +94,22 @@ export const Menu = (): JSX.Element => {
       }
 
       return (
-        <li
-          className={cn(styles.secondLevelItem, { [styles.open]: item.isOpen })}
-          key={item._id.secondCategory}>
+        <motion.li
+          className={cn(styles.secondLevelItem)}
+          key={item._id.secondCategory}
+          layout
+          variants={variants}
+          initial={item.isOpen ? 'show' : 'hidden'}
+          animate={item.isOpen ? 'show' : 'hidden'}>
           <>
             <button type="button" onClick={() => onChangeSecondMenu(item._id.secondCategory)}>
               {item._id.secondCategory}
             </button>
-            <ul className={styles.thirdLevelMenu}>
+            <motion.ul className={styles.thirdLevelMenu} variants={variantsMenuList}>
               {renderThirdLevelMenu(item, firstMenuItem.route)}
-            </ul>
+            </motion.ul>
           </>
-        </li>
+        </motion.li>
       );
     });
   };
@@ -77,11 +119,14 @@ export const Menu = (): JSX.Element => {
       const isActive = `/${route}/${page.alias}` === router.asPath;
 
       return (
-        <li className={cn(styles.thirdLevelItem, { [styles.active]: isActive })} key={page._id}>
+        <motion.li
+          className={cn(styles.thirdLevelItem, { [styles.active]: isActive })}
+          key={page._id}
+          variants={variantsChildren}>
           <Link href={`/${route}/${page.alias}`}>
             <a>{page.title}</a>
           </Link>
-        </li>
+        </motion.li>
       );
     });
   };
