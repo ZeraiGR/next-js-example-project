@@ -14,6 +14,7 @@ import { declOfNum } from '../../utils/declination-of-numbers';
 import { Review } from '../Review/Review';
 import { Divider } from '../Divider/Divider';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
+import { motion } from 'framer-motion';
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
   const {
@@ -39,12 +40,17 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 
   const discount = price && oldPrice ? Math.round((price - oldPrice) / 1000) * 1000 : null;
 
-  const scrollToReview = () => {
-    setIsShowReviews(true);
+  const scrollToReview = async () => {
+    await setIsShowReviews(true);
     reviewRef.current?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     });
+  };
+
+  const variants = {
+    hidden: { height: 0, opacity: 0 },
+    show: { height: 'auto', opacity: 1 },
   };
 
   return (
@@ -169,25 +175,24 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
           </li>
         </ul>
       </Card>
-      <Card
-        className={cn(styles.reviews, {
-          [styles.show]: isShowReviews,
-          [styles.hide]: !isShowReviews,
-        })}
-        appearance="gray"
-        ref={reviewRef}>
-        {reviews && (
-          <ul className={styles.revlist}>
-            {reviews.map((r) => (
-              <React.Fragment key={r._id}>
-                <Review review={r} />
-                <Divider />
-              </React.Fragment>
-            ))}
-          </ul>
-        )}
-        <ReviewForm productid={_id} />
-      </Card>
+      <motion.div
+        variants={variants}
+        animate={isShowReviews ? 'show' : 'hidden'}
+        initial={'hidden'}>
+        <Card className={cn(styles.reviews)} appearance="gray" ref={reviewRef}>
+          {reviews && (
+            <ul className={styles.revlist}>
+              {reviews.map((r) => (
+                <React.Fragment key={r._id}>
+                  <Review review={r} />
+                  <Divider />
+                </React.Fragment>
+              ))}
+            </ul>
+          )}
+          <ReviewForm productid={_id} />
+        </Card>
+      </motion.div>
     </article>
   );
 };
