@@ -1,9 +1,9 @@
 import React from 'react';
 
 import styles from './Up.module.scss';
-import UpIcon from './icon-up.svg';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useScrollY } from '../../hooks/useScrollY';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 
 export const Up = (): JSX.Element => {
   const controls = useAnimationControls();
@@ -27,7 +27,7 @@ export const Up = (): JSX.Element => {
       type="button"
       animate={controls}
       initial={{ opacity: 0 }}>
-      <UpIcon />
+      <ButtonIcon appearance="primary" icon="up" />
     </motion.button>
   );
 };
