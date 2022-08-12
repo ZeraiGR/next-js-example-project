@@ -5,6 +5,7 @@ import axios from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
 import { Htag, Button, P, Tag, Rating, Input, Textarea } from '../components';
 import { withLayout } from '../layout/Layout';
+import { API } from '../api/api';
 
 interface HomeProps extends Record<string, unknown> {
   menu: MenuItem[];
@@ -48,15 +49,11 @@ const Home: NextPage<HomeProps> = ({ menu, firstCategory }): JSX.Element => {
 
 export default withLayout(Home);
 
-// Вызывается только на сервере! На клиенте в бандл этот код не попадёт!
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0;
-  const { data: menu } = await axios.post<MenuItem[]>(
-    process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-    {
-      firstCategory,
-    },
-  );
+  const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+    firstCategory,
+  });
 
   return {
     props: {

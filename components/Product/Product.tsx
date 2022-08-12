@@ -35,8 +35,17 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
     reviews,
   } = product;
   const [isShowReviews, setIsShowReviews] = React.useState<boolean>(false);
+  const reviewRef = React.useRef<HTMLDivElement>(null);
 
   const discount = price && oldPrice ? Math.round((price - oldPrice) / 1000) * 1000 : null;
+
+  const scrollToReview = () => {
+    setIsShowReviews(true);
+    reviewRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
 
   return (
     <article className={cn(className, styles.product)} {...props}>
@@ -94,7 +103,9 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
         <div className={styles.creditDescr}>в кредит</div>
 
         <div className={styles.reviewCount}>
-          {reviewCount} {declOfNum(reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+          <a href="#ref" onClick={scrollToReview}>
+            {reviewCount} {declOfNum(reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+          </a>
         </div>
 
         <Divider className={styles.headerDivider} />
@@ -163,7 +174,8 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
           [styles.show]: isShowReviews,
           [styles.hide]: !isShowReviews,
         })}
-        appearance="gray">
+        appearance="gray"
+        ref={reviewRef}>
         {reviews && (
           <ul className={styles.revlist}>
             {reviews.map((r) => (

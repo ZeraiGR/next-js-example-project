@@ -6,6 +6,7 @@ export * from './HHdata/HHdata';
 export * from './Htag/Htag';
 export * from './Input/Input';
 export * from './P/P';
+export * from './Panel/Panel';
 export * from './Product/Product';
 export * from './Rate/Rate';
 export * from './Rating/Rating';

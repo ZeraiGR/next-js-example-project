@@ -8,6 +8,7 @@ import { ProductModel } from '../../interfaces/course.interface';
 import { MenuItem } from '../../interfaces/menu.interface';
 import { withLayout } from '../../layout/Layout';
 import { TopPageComponent } from '../../page-components';
+import { API } from '../../api/api';
 interface TopPageProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: TopCategory;
@@ -25,12 +26,9 @@ export const getStaticPaths: GetStaticPaths = async ({ params }: GetStaticPropsC
   let paths: string[] = [];
 
   for (const menuItem of firstLevelMenu) {
-    const { data: menu } = await axios.post<MenuItem[]>(
-      process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-      {
-        firstCategory: menuItem.id,
-      },
-    );
+    const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+      firstCategory: menuItem.id,
+    });
     paths = paths.concat(
       menu.flatMap((item) => item.pages.map((page) => `/${menuItem.route}/${page.alias}`)),
     );
@@ -56,25 +54,20 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({
   }
 
   try {
-    const { data: menu } = await axios.post<MenuItem[]>(
-      process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-      {
-        firstCategory: categoryType.id,
-      },
-    );
+    const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+      firstCategory: categoryType.id,
+    });
 
     if (!menu.length) {
       return { notFound: true };
     }
 
-    const { data: page } = await axios.get<PageModel>(
-      process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/byAlias/' + params.alias,
-    );
+    const { data: page } = await axios.get<PageModel>(API.topPage.byAlias + params.alias);
 
-    const { data: products } = await axios.post<ProductModel[]>(
-      process.env.NEXT_PUBLIC_DOMAIN + '/api/product/find',
-      { category: page.category, limit: 10 },
-    );
+    const { data: products } = await axios.post<ProductModel[]>(API.product.find, {
+      category: page.category,
+      limit: 10,
+    });
 
     return {
       props: {

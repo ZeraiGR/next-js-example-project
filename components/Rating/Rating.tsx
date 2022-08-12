@@ -47,7 +47,9 @@ export const Rating = React.forwardRef(
           onMouseLeave={() => showRating(rating)}
           onClick={() => setRatingWithMouse(i + 1)}>
           <StarIcon
-            className={cn(styles.star, { [styles.filled]: i < currentRating })}
+            className={cn(styles.star, {
+              [styles.filled]: i < currentRating,
+            })}
             onKeyPress={(e: KeyboardEvent<SVGElement>) => setRatingWithKey(e, i + 1)}
             tabIndex={isEditable ? 0 : -1}
           />

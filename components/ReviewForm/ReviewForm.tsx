@@ -8,32 +8,55 @@ import { Input } from '../Input/Input';
 import { Textarea } from '../Textarea/Textarea';
 import { Button } from '../Button/Button';
 import { Rating } from '../Rating/Rating';
-import { Success } from '../Success/Success';
+import { Panel } from '../Panel/Panel';
 import CloseIcon from './icon-close.svg';
-import { IReviewForm } from './ReviewFrom.interface';
+import { IReviewForm, IReviewResponseData } from './ReviewFrom.interface';
+import axios from 'axios';
+import { API } from '../../api/api';
+import Error from 'next/error';
 
-export const ReviewForm = ({ className, ...props }: ReviewFormProps): JSX.Element => {
+export const ReviewForm = ({ productid, className, ...props }: ReviewFormProps): JSX.Element => {
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IReviewForm>();
+  const [isSuccess, setIsSuccess] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<string | null>(null);
+  let result;
 
-  const onSubmit = (data: IReviewForm) => {
-    console.log(data);
+  const onSubmit = async (formData: IReviewForm) => {
+    try {
+      const { data } = await axios.post<IReviewResponseData>(API.review.createDemo, {
+        ...formData,
+        productid,
+      });
+
+      if (data.message) {
+        setIsSuccess(true);
+        setError(null);
+      }
+    } catch (e) {
+      result = e as Error;
+      setError('Ошибка:' + result);
+      setIsSuccess(false);
+    } finally {
+      reset();
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={cn(styles.form, className)} {...props}>
         <Input
-          {...register('name', { required: ' Заполните имя' })}
+          {...register('name', { required: { value: true, message: ' Заполните имя' } })}
           placeholder="Имя"
           error={errors.name}
         />
         <Input
-          {...register('title', { required: ' Заполните заголовок' })}
+          {...register('title', { required: { value: true, message: ' Заполните заголовок' } })}
           className={styles.title}
           placeholder="Заголовок отзыва"
           error={errors.title}
@@ -47,14 +70,16 @@ export const ReviewForm = ({ className, ...props }: ReviewFormProps): JSX.Elemen
           <Controller
             name="rating"
             control={control}
-            rules={{ required: 'Поставьте оценку!' }}
+            rules={{ required: { value: true, message: 'Укажите рейтинг' } }}
             render={({ field }) => (
               <Rating isEditable rating={field.value} ref={field.ref} setRating={field.onChange} />
             )}
           />
         </div>
         <Textarea
-          {...register('description', { required: ' Заполните описание' })}
+          {...register('description', {
+            required: { value: true, message: ' Заполните описание' },
+          })}
           className={styles.textarea}
           placeholder="Текст отзыва"
           error={errors.description}
@@ -66,13 +91,26 @@ export const ReviewForm = ({ className, ...props }: ReviewFormProps): JSX.Elemen
           <span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
         </div>
       </div>
-      <Success>
-        <strong className={styles.successTitle}>Ваш отзыв успешно отправлен!</strong>
-        <p className={styles.succesDescr}>
-          После того, как отзыв пройдёт модерацию, мы сможем его отобразить.
-        </p>
-        <CloseIcon className={styles.close} />
-      </Success>
+      {isSuccess && (
+        <Panel type="success">
+          <strong className={styles.successTitle}>Ваш отзыв успешно отправлен!</strong>
+          <p className={styles.succesDescr}>
+            После того, как отзыв пройдёт модерацию, мы сможем его отобразить.
+          </p>
+          <CloseIcon className={styles.close} onClick={() => setIsSuccess(false)} />
+        </Panel>
+      )}
+      {error && (
+        <Panel type="error">
+          <p className={styles.errorDescr}>
+            Что-то пошло не так, попробуйте перезагрузить страницу
+          </p>
+          <CloseIcon
+            className={cn(styles.close, styles.closeError)}
+            onClick={() => setError(null)}
+          />
+        </Panel>
+      )}
     </form>
   );
 };

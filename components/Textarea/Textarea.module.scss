@@ -7,6 +7,7 @@
   width: 100%;
   padding: 7px 15px;
   box-shadow: 0 4px 4px 0 var(--box-shadow);
+  border: 1px solid transparent;
   border-radius: 4px;
   resize: vertical;
 
@@ -16,6 +17,14 @@
 
   &::placeholder {
     color: var(--white-dark);
+  }
+
+  &.ErrorTextarea {
+    border-color: var(--red);
+
+    &:focus {
+      outline-color: var(--red);
+    }
   }
 }
 

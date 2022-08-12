@@ -11,7 +11,11 @@ export const Textarea = React.forwardRef(
   ): JSX.Element => {
     return (
       <div className={cn(styles.field, className)}>
-        <textarea className={styles.textarea} ref={ref} {...props} />
+        <textarea
+          className={cn(styles.textarea, { [styles.ErrorTextarea]: error })}
+          ref={ref}
+          {...props}
+        />
         {error && <span className={styles.error}>{error.message}</span>}
       </div>
     );

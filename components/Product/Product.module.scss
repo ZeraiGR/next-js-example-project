@@ -185,6 +185,12 @@
   grid-column: beforerating / end;
 }
 
+.reviewCount {
+  a {
+    color: var(--accent);
+  }
+}
+
 .tags {
   display: flex;
   align-items: flex-start;
