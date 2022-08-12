@@ -8,6 +8,7 @@ import { SortEnum } from '../../components/Sort/Sort.props';
 import { TopCategory } from '../../interfaces/page.interface';
 import { TopPageComponentProps } from './TopPage.component.props';
 import styles from './TopPage.component.module.scss';
+import { motion } from 'framer-motion';
 
 export const TopPageComponent = ({ firstCategory, products, page }: TopPageComponentProps) => {
   const [{ products: sortedProducts, sort }, dispatch] = React.useReducer(
@@ -44,9 +45,9 @@ export const TopPageComponent = ({ firstCategory, products, page }: TopPageCompo
       {sortedProducts && (
         <ul className={styles.products}>
           {sortedProducts.map((p) => (
-            <li key={p._id} className={styles.product}>
+            <motion.li key={p._id} layout className={styles.product}>
               <Product product={p} />
-            </li>
+            </motion.li>
           ))}
         </ul>
       )}
