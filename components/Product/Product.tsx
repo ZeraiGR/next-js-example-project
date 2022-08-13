@@ -194,7 +194,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
               ))}
             </div>
           )}
-          <ReviewForm productid={_id} />
+          <ReviewForm productid={_id} isOpened={isShowReviews} />
         </Card>
       </motion.div>
     </article>

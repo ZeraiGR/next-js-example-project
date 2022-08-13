@@ -15,7 +15,12 @@ import axios from 'axios';
 import { API } from '../../api/api';
 import Error from 'next/error';
 
-export const ReviewForm = ({ productid, className, ...props }: ReviewFormProps): JSX.Element => {
+export const ReviewForm = ({
+  productid,
+  isOpened,
+  className,
+  ...props
+}: ReviewFormProps): JSX.Element => {
   const {
     register,
     control,
@@ -25,6 +30,7 @@ export const ReviewForm = ({ productid, className, ...props }: ReviewFormProps):
   } = useForm<IReviewForm>();
   const [isSuccess, setIsSuccess] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
+  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
   let result;
 
   const onSubmit = async (formData: IReviewForm) => {
@@ -54,12 +60,14 @@ export const ReviewForm = ({ productid, className, ...props }: ReviewFormProps):
           {...register('name', { required: { value: true, message: ' Заполните имя' } })}
           placeholder="Имя"
           error={errors.name}
+          tabIndex={isOpened ? 0 : -1}
         />
         <Input
           {...register('title', { required: { value: true, message: ' Заполните заголовок' } })}
           className={styles.title}
           placeholder="Заголовок отзыва"
           error={errors.title}
+          tabIndex={isOpened ? 0 : -1}
         />
         <div className={styles.rating}>
           {errors.rating ? (
@@ -72,7 +80,14 @@ export const ReviewForm = ({ productid, className, ...props }: ReviewFormProps):
             control={control}
             rules={{ required: { value: true, message: 'Укажите рейтинг' } }}
             render={({ field }) => (
-              <Rating isEditable rating={field.value} ref={field.ref} setRating={field.onChange} />
+              <Rating
+                isEditable
+                rating={field.value}
+                ref={field.ref}
+                setRating={field.onChange}
+                nextFocusElementRef={textareaRef}
+                tabIndex={isOpened ? 0 : -1}
+              />
             )}
           />
         </div>
@@ -83,9 +98,11 @@ export const ReviewForm = ({ productid, className, ...props }: ReviewFormProps):
           className={styles.textarea}
           placeholder="Текст отзыва"
           error={errors.description}
+          ref={textareaRef}
+          tabIndex={isOpened ? 0 : -1}
         />
         <div className={styles.submit}>
-          <Button className={styles.btn} appearance="primary">
+          <Button className={styles.btn} appearance="primary" tabIndex={isOpened ? 0 : -1}>
             Отправить
           </Button>
           <span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>

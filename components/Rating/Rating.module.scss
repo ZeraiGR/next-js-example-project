@@ -19,17 +19,16 @@
       stroke: var(--red);
     }
   }
+
+  &:focus {
+    outline-color: var(--orange);
+  }
 }
 
 .star {
   width: 20px;
   height: 20px;
   transition: fill 0.15s ease;
-  outline: transparent;
-
-  &:focus-visible {
-    outline-color: var(--orange);
-  }
 
   &.filled {
     fill: var(--accent);

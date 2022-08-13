@@ -7,7 +7,15 @@ import styles from './Rating.module.scss';
 
 export const Rating = React.forwardRef(
   (
-    { rating, isEditable = false, setRating, className, ...props }: RatingProps,
+    {
+      rating,
+      isEditable = false,
+      setRating,
+      className,
+      nextFocusElementRef,
+      tabIndex,
+      ...props
+    }: RatingProps,
     ref: ForwardedRef<HTMLUListElement>,
   ): JSX.Element => {
     const [ratingArr, setRatingArr] = React.useState<JSX.Element[]>(
@@ -18,7 +26,9 @@ export const Rating = React.forwardRef(
 
     React.useEffect(() => {
       constructRating(rating);
-    }, [rating]);
+    }, [rating, tabIndex]);
+
+    const ratingElemsRef = React.useRef<(HTMLLIElement | null)[]>([]);
 
     const showRating = (rating: number) => {
       if (isEditable) {
@@ -32,10 +42,48 @@ export const Rating = React.forwardRef(
       }
     };
 
-    const setRatingWithKey = (e: KeyboardEvent<SVGElement>, rating: number) => {
-      if (e.code === 'Space' && isEditable && setRating != undefined) {
-        setRating(rating);
+    const handleKey = (e: KeyboardEvent) => {
+      if (!isEditable || !setRating) {
+        return;
       }
+
+      if (e.code === 'ArrowRight' || e.code === 'ArrowUp') {
+        e.preventDefault();
+        if (!rating) {
+          setRating(1);
+        } else {
+          setRating(rating < 5 ? rating + 1 : 5);
+        }
+
+        ratingElemsRef.current[rating]?.focus();
+      }
+
+      if (e.code === 'ArrowLeft' || e.code === 'ArrowDown') {
+        e.preventDefault();
+        setRating(rating > 1 ? rating - 1 : 1);
+        ratingElemsRef.current[rating - 2]?.focus();
+      }
+
+      if (e.code === 'Enter' || e.code === 'Space') {
+        e.preventDefault();
+        nextFocusElementRef?.current?.focus();
+      }
+    };
+
+    const calculateTabIndex = (rating: number, i: number) => {
+      if (!isEditable) {
+        return -1;
+      }
+
+      if (!rating && i === 0) {
+        return tabIndex ?? 0;
+      }
+
+      if (rating === i + 1) {
+        return tabIndex ?? 0;
+      }
+
+      return -1;
     };
 
     const constructRating = (currentRating: number) => {
@@ -45,13 +93,14 @@ export const Rating = React.forwardRef(
           className={cn(styles.rate, { [styles.isEdit]: isEditable })}
           onMouseEnter={() => showRating(i + 1)}
           onMouseLeave={() => showRating(rating)}
-          onClick={() => setRatingWithMouse(i + 1)}>
+          onClick={() => setRatingWithMouse(i + 1)}
+          onKeyDown={handleKey}
+          tabIndex={calculateTabIndex(rating, i)}
+          ref={(r) => ratingElemsRef.current.push(r)}>
           <StarIcon
             className={cn(styles.star, {
               [styles.filled]: i < currentRating,
             })}
-            onKeyPress={(e: KeyboardEvent<SVGElement>) => setRatingWithKey(e, i + 1)}
-            tabIndex={isEditable ? 0 : -1}
           />
         </li>
       ));
