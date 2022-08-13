@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { ProductProps } from './Product.props';
 import styles from './Product.module.scss';
 import { Card } from '../Card/Card';
-import { Htag } from '../Htag/Htag';
 import { priceRu } from '../../utils/format-numbers';
 import { Tag } from '../Tag/Tag';
 import { Rating } from '../Rating/Rating';
@@ -15,6 +14,7 @@ import { Review } from '../Review/Review';
 import { Divider } from '../Divider/Divider';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 import { motion } from 'framer-motion';
+import { smoothScroll } from '../../utils/smooth-scroll';
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
   const {
@@ -40,12 +40,13 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 
   const discount = price && oldPrice ? Math.round((price - oldPrice) / 1000) * 1000 : null;
 
-  const scrollToReview = async () => {
-    await setIsShowReviews(true);
-    reviewRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+  const scrollToReview = () => {
+    setIsShowReviews(true);
+    setTimeout(() => {
+      smoothScroll(reviewRef.current, { block: 'start' }).then(() => {
+        reviewRef.current?.focus();
+      });
+    }, 0);
   };
 
   const variants = {
@@ -174,11 +175,15 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
         </ul>
       </Card>
       <motion.div
-        className={styles.revwrap}
+        className={cn(styles.revwrap, { [styles.opened]: isShowReviews })}
         variants={variants}
         animate={isShowReviews ? 'show' : 'hidden'}
         initial={isShowReviews ? 'show' : 'hidden'}>
-        <Card className={cn(styles.reviews)} appearance="gray" ref={reviewRef}>
+        <Card
+          className={cn(styles.reviews)}
+          appearance="gray"
+          ref={reviewRef}
+          tabIndex={isShowReviews ? 0 : -1}>
           {reviews && (
             <div className={styles.revlist}>
               {reviews.map((r) => (

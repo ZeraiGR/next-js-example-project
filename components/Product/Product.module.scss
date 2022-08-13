@@ -363,6 +363,10 @@
 
 .revwrap {
   overflow: hidden;
+
+  &.opened {
+    overflow: visible;
+  }
 }
 
 .reviews {
