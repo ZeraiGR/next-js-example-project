@@ -1,59 +1,63 @@
 .button {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px;
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease,
-    box-shadow 0.3s ease;
+	display: inline-flex;
+	align-items: center;
+	padding: 10px;
+	transition:
+		background-color 0.3s ease,
+		border-color 0.3s ease,
+		color 0.3s ease,
+		box-shadow 0.3s ease;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	font-size: 14px;
+	line-height: 1;
 
-  &.primary {
-    background-color: var(--accent);
-    border-color: var(--white);
-    color: var(--white);
+	&.primary {
+		color: var(--white);
+		border-color: var(--white);
+		background-color: var(--accent);
 
-    .arrow svg {
-      fill: var(--white);
-    }
+		.arrow svg {
+			fill: var(--white);
+		}
 
-    &:hover {
-      background-color: var(--accent-hover);
-    }
-  }
+		&:hover {
+			background-color: var(--accent-hover);
+		}
+	}
 
-  &.ghost {
-    border-color: var(--gray-light);
+	&.ghost {
+		border-color: var(--gray-light);
 
-    &:hover {
-      background-color: var(--accent);
-      color: var(--white);
+		&:hover {
+			color: var(--white);
+			background-color: var(--accent);
 
-      .arrow svg {
-        fill: var(--white);
-      }
-    }
-  }
+			.arrow svg {
+				fill: var(--white);
+			}
+		}
+	}
 
-  &:focus-visible {
-    outline-color: var(--orange);
-  }
+	&:focus-visible {
+		outline-color: var(--orange);
+	}
 
-  &:active {
-    box-shadow: 0 4px 4px 0 var(--box-shadow);
-  }
+	&:active {
+		box-shadow: 0 4px 4px 0 var(--box-shadow);
+	}
 }
 
 .arrow {
-  margin-left: 10px;
-  display: inline-block;
-  transition: transform 0.3s ease;
+	display: inline-block;
+	margin-left: 10px;
+	transition: transform 0.3s ease;
 
-  &.down {
-    transform: rotate(90deg);
-  }
+	&.down {
+		transform: rotate(90deg);
+	}
 
-  svg {
-    transition: fill 0.3s ease;
-  }
+	svg {
+		transition: fill 0.3s ease;
+	}
 }

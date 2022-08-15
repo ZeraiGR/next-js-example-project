@@ -8,9 +8,11 @@ import { SortEnum } from '../../components/Sort/Sort.props';
 import { TopCategory } from '../../interfaces/page.interface';
 import { TopPageComponentProps } from './TopPage.component.props';
 import styles from './TopPage.component.module.scss';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import { declOfNum } from '../../utils/declination-of-numbers';
 
 export const TopPageComponent = ({ firstCategory, products, page }: TopPageComponentProps) => {
+  const shouldReduceMotion = useReducedMotion();
   const [{ products: sortedProducts, sort }, dispatch] = React.useReducer(
     sortReducer,
     {
@@ -34,7 +36,12 @@ export const TopPageComponent = ({ firstCategory, products, page }: TopPageCompo
         <div className={styles.info}>
           {page.title && <Htag tag="h1">{page.title}</Htag>}
           {products && (
-            <Tag size="big" appearance="gray">
+            <Tag
+              size="big"
+              appearance="gray"
+              aria-label={
+                products.length + declOfNum(products.length, ['элемент', 'элемента', 'элементов'])
+              }>
               {products.length}
             </Tag>
           )}
@@ -45,7 +52,10 @@ export const TopPageComponent = ({ firstCategory, products, page }: TopPageCompo
       {sortedProducts && (
         <ul className={styles.products}>
           {sortedProducts.map((p) => (
-            <motion.li key={p._id} layout className={styles.product}>
+            <motion.li
+              key={p._id}
+              layout={shouldReduceMotion ? false : true}
+              className={styles.product}>
               <Product product={p} />
             </motion.li>
           ))}

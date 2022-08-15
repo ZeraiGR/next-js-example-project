@@ -3037,6 +3037,11 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
+husky@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.1.tgz#511cb3e57de3e3190514ae49ed50f6bc3f50b3e9"
+  integrity sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
+
 iconv-lite@^0.6.2:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
@@ -4095,6 +4100,11 @@ react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-yandex-metrika@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/react-yandex-metrika/-/react-yandex-metrika-2.6.0.tgz#9c935c8c7ea5505e34391b9b3e86deb6d50053c9"
+  integrity sha512-8K4wExsNZtY3DTxh1G8a+zWH9Pg8fw23MJcoJ4I/562qrHRnh7L5nteq3lnNL58dnNQbuuHIRoGgMjIo+r1GjA==
 
 react@18.2.0:
   version "18.2.0"

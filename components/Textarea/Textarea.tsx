@@ -16,7 +16,11 @@ export const Textarea = React.forwardRef(
           ref={ref}
           {...props}
         />
-        {error && <span className={styles.error}>{error.message}</span>}
+        {error && (
+          <span className={styles.error} role="alert">
+            {error.message}
+          </span>
+        )}
       </div>
     );
   },

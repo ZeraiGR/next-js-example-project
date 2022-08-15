@@ -1,13 +1,13 @@
 .panel {
-  position: relative;
-  padding: 20px;
-  border-radius: 4px;
+	position: relative;
+	padding: 20px;
+	border-radius: 4px;
 
-  &.success {
-    background-color: var(--green--light);
-  }
+	&.success {
+		background-color: var(--green--light);
+	}
 
-  &.error {
-    background-color: var(--orange--light);
-  }
+	&.error {
+		background-color: var(--orange--light);
+	}
 }

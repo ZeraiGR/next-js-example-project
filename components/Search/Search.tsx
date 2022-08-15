@@ -36,10 +36,7 @@ export const Search = ({ className, id, ...props }: SearchProps): JSX.Element =>
   };
 
   return (
-    <div className={cn(styles.search, className)} {...props}>
-      <label className="sr-only" htmlFor={id}>
-        Поиск...
-      </label>
+    <form className={cn(styles.search, className)} {...props} role="search">
       <Input
         id={id}
         placeholder="Поиск..."
@@ -47,10 +44,16 @@ export const Search = ({ className, id, ...props }: SearchProps): JSX.Element =>
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={goToSearchWithKeyBoard}
         type="search"
+        aria-label="Поиск по сайту"
       />
-      <Button className={styles.btnIcon} appearance="primary" type="button" onClick={goToSearch}>
+      <Button
+        className={styles.btnIcon}
+        appearance="primary"
+        type="button"
+        aria-label="Искать по сайту"
+        onClick={goToSearch}>
         <SearchIcon />
       </Button>
-    </div>
+    </form>
   );
 };

@@ -27,10 +27,10 @@ export const ReviewForm = ({
     handleSubmit,
     formState: { errors },
     reset,
+    clearErrors,
   } = useForm<IReviewForm>();
   const [isSuccess, setIsSuccess] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
-  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
   let result;
 
   const onSubmit = async (formData: IReviewForm) => {
@@ -61,6 +61,7 @@ export const ReviewForm = ({
           placeholder="Имя"
           error={errors.name}
           tabIndex={isOpened ? 0 : -1}
+          aria-invalid={errors.name ? true : false}
         />
         <Input
           {...register('title', { required: { value: true, message: ' Заполните заголовок' } })}
@@ -68,10 +69,13 @@ export const ReviewForm = ({
           placeholder="Заголовок отзыва"
           error={errors.title}
           tabIndex={isOpened ? 0 : -1}
+          aria-invalid={errors.title ? true : false}
         />
         <div className={styles.rating}>
           {errors.rating ? (
-            <span className={styles.error}>{errors.rating.message}</span>
+            <span className={styles.error} role="alert">
+              {errors.rating.message}
+            </span>
           ) : (
             <span>Оценка:</span>
           )}
@@ -85,47 +89,61 @@ export const ReviewForm = ({
                 rating={field.value}
                 ref={field.ref}
                 setRating={field.onChange}
-                nextFocusElementRef={textareaRef}
                 tabIndex={isOpened ? 0 : -1}
+                error={errors.rating}
               />
             )}
           />
         </div>
         <Textarea
           {...register('description', {
-            required: { value: true, message: ' Заполните описание' },
+            required: { value: true, message: 'Заполните описание' },
           })}
           className={styles.textarea}
           placeholder="Текст отзыва"
           error={errors.description}
-          ref={textareaRef}
+          aria-label="Текст отзыва"
           tabIndex={isOpened ? 0 : -1}
+          aria-invalid={errors.description ? true : false}
         />
         <div className={styles.submit}>
-          <Button className={styles.btn} appearance="primary" tabIndex={isOpened ? 0 : -1}>
+          <Button
+            className={styles.btn}
+            appearance="primary"
+            tabIndex={isOpened ? 0 : -1}
+            onClick={() => clearErrors()}>
             Отправить
           </Button>
           <span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
         </div>
       </div>
       {isSuccess && (
-        <Panel type="success">
+        <Panel type="success" role="alert">
           <strong className={styles.successTitle}>Ваш отзыв успешно отправлен!</strong>
           <p className={styles.succesDescr}>
             После того, как отзыв пройдёт модерацию, мы сможем его отобразить.
           </p>
-          <CloseIcon className={styles.close} onClick={() => setIsSuccess(false)} />
+          <button
+            className={styles.closeBtn}
+            type="button"
+            aria-label={'Закрыть оповещение'}
+            onClick={() => setIsSuccess(false)}>
+            <CloseIcon className={styles.closeIcon} />
+          </button>
         </Panel>
       )}
       {error && (
-        <Panel type="error">
+        <Panel type="error" role="alert">
           <p className={styles.errorDescr}>
             Что-то пошло не так, попробуйте перезагрузить страницу
           </p>
-          <CloseIcon
-            className={cn(styles.close, styles.closeError)}
-            onClick={() => setError(null)}
-          />
+          <button
+            className={styles.closeBtn}
+            type="button"
+            aria-label="Закрыть оповещение"
+            onClick={() => setIsSuccess(false)}>
+            <CloseIcon className={styles.closeIcon} />
+          </button>
         </Panel>
       )}
     </form>

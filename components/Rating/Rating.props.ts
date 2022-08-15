@@ -6,5 +6,5 @@ export interface RatingProps
   rating: number;
   isEditable?: boolean;
   setRating?: (rating: number) => void;
-  nextFocusElementRef?: React.RefObject<HTMLTextAreaElement>;
+  error?: FieldError;
 }

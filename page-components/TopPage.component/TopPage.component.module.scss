@@ -1,79 +1,79 @@
 .header {
-  margin-bottom: 20px;
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 50px;
-  justify-content: space-between;
+	display: grid;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	grid-template-columns: auto auto;
+	gap: 50px;
 
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+	@media (max-width: 1024px) {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
 }
 
 .info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
 }
 
 .products,
 .job {
-  margin-bottom: 50px;
+	margin-bottom: 50px;
 }
 
 .product {
-  &:not(:last-child) {
-    margin-bottom: 30px;
-  }
+	&:not(:last-child) {
+		margin-bottom: 30px;
+	}
 }
 
 .advantages,
 .seoText {
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .tagTitle {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .tags {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
 }
 
 .seoText {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 20px 0;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 20px 0;
+	}
 
-  h1 {
-    font-size: 26px;
-  }
+	h1 {
+		font-size: 26px;
+	}
 
-  h2 {
-    font-size: 22px;
-  }
+	h2 {
+		font-size: 22px;
+	}
 
-  h3 {
-    font-size: 20px;
-    font-weight: 600;
-  }
+	h3 {
+		font-size: 20px;
+		font-weight: 600;
+	}
 
-  ol,
-  ul {
-    margin: 10px 0;
-    padding-left: 30px;
+	ol,
+	ul {
+		margin: 10px 0;
+		padding-left: 30px;
 
-    li {
-      margin: 15px 0;
-    }
-  }
+		li {
+			margin: 15px 0;
+		}
+	}
 }

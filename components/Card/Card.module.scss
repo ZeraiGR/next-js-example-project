@@ -1,15 +1,15 @@
 .card {
-  background-color: var(--white);
-  box-shadow: 0 4px 4px 0 var(--box-shadow);
-  border-radius: 4px;
-  outline: transparent;
-  border: 1px solid transparent;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	outline: transparent;
+	background-color: var(--white);
+	box-shadow: 0 4px 4px 0 var(--box-shadow);
 
-  &.gray {
-    background-color: #f9f8ff;
-  }
+	&.gray {
+		background-color: #f9f8ff;
+	}
 
-  &:focus {
-    border-color: var(--accent);
-  }
+	&:focus {
+		border-color: var(--accent);
+	}
 }

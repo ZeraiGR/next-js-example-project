@@ -1,27 +1,28 @@
 .sort {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  li:not(:last-child) {
-    margin-right: 40px;
-  }
+	li:not(:last-child) {
+		margin-right: 40px;
+	}
 }
 
 .btn {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
+	outline-color: var(--orange);
 
-  svg {
-    display: none;
-    margin-right: 8px;
-  }
+	svg {
+		display: none;
+		margin-right: 8px;
+	}
 
-  &.active {
-    color: var(--accent);
-    font-weight: 700;
+	&.active {
+		color: var(--accent);
+		font-weight: 700;
 
-    svg {
-      display: block;
-    }
-  }
+		svg {
+			display: block;
+		}
+	}
 }

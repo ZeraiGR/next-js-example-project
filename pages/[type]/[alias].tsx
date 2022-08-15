@@ -9,6 +9,8 @@ import { MenuItem } from '../../interfaces/menu.interface';
 import { withLayout } from '../../layout/Layout';
 import { TopPageComponent } from '../../page-components';
 import { API } from '../../api/api';
+import Head from 'next/head';
+
 interface TopPageProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: TopCategory;
@@ -17,7 +19,22 @@ interface TopPageProps extends Record<string, unknown> {
 }
 
 const TopPage: NextPage<TopPageProps> = ({ firstCategory, page, products }): JSX.Element => {
-  return <TopPageComponent firstCategory={firstCategory} page={page} products={products} />;
+  return (
+    <>
+      {page && products && (
+        <>
+          <Head>
+            <title>{page.metaTitle}</title>
+            <meta name="description" content={page.metaDescription} />
+            <meta property="og:title" content={page.metaTitle} />
+            <meta property="og:description" content={page.metaDescription} />
+            <meta property="og:type" content="article" />
+          </Head>
+          <TopPageComponent firstCategory={firstCategory} page={page} products={products} />
+        </>
+      )}
+    </>
+  );
 };
 
 export default withLayout(TopPage);

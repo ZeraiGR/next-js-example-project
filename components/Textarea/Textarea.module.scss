@@ -1,36 +1,36 @@
 .field {
-  position: relative;
+	position: relative;
 }
 
 .textarea {
-  max-width: 100%;
-  width: 100%;
-  padding: 7px 15px;
-  box-shadow: 0 4px 4px 0 var(--box-shadow);
-  border: 1px solid transparent;
-  border-radius: 4px;
-  resize: vertical;
+	width: 100%;
+	max-width: 100%;
+	padding: 7px 15px;
+	resize: vertical;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	box-shadow: 0 4px 4px 0 var(--box-shadow);
 
-  &:focus {
-    outline-color: var(--accent);
-  }
+	&:focus {
+		outline-color: var(--accent);
+	}
 
-  &::placeholder {
-    color: var(--white-dark);
-  }
+	&::placeholder {
+		color: var(--white-dark);
+	}
 
-  &.ErrorTextarea {
-    border-color: var(--red);
+	&.ErrorTextarea {
+		border-color: var(--red);
 
-    &:focus {
-      outline-color: var(--red);
-    }
-  }
+		&:focus {
+			outline-color: var(--red);
+		}
+	}
 }
 
 .error {
-  position: absolute;
-  bottom: -20px;
-  left: 5px;
-  color: var(--red);
+	position: absolute;
+	bottom: -20px;
+	left: 5px;
+	color: var(--red);
 }

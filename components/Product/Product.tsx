@@ -70,16 +70,19 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 
         <div className={styles.price}>
           <div className={styles.currentPrice}>
+            <span className="sr-only">Цена:</span>
             {product.price ? priceRu(product.price) : 'Цена не указана'}
           </div>
           {discount && (
             <Tag className={styles.discount} size="small" appearance="green">
+              <span className="sr-only">Скидка:</span>
               {priceRu(discount)}
             </Tag>
           )}
         </div>
 
         <div className={styles.credit}>
+          <span className="sr-only">Кредит:</span>
           {price ? (
             <>
               {priceRu(credit)}
@@ -90,7 +93,10 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
           )}
         </div>
 
-        <Rating className={styles.rating} rating={reviewAvg ? reviewAvg : initialRating} />
+        <div className={styles.rating}>
+          <span className="sr-only">{`Рейтинг: ${reviewAvg ?? initialRating}`}</span>
+          <Rating rating={reviewAvg ?? initialRating} />
+        </div>
 
         <ul className={styles.tags}>
           {categories &&
@@ -103,9 +109,13 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
             ))}
         </ul>
 
-        <div className={styles.priceDescr}>цена</div>
+        <div className={styles.priceDescr} aria-hidden={true}>
+          цена
+        </div>
 
-        <div className={styles.creditDescr}>в кредит</div>
+        <div className={styles.creditDescr} aria-hidden={true}>
+          в кредит
+        </div>
 
         <div className={styles.reviewCount}>
           <a href="#ref" onClick={scrollToReview}>
@@ -168,7 +178,8 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
             <Button
               onClick={() => setIsShowReviews(!isShowReviews)}
               appearance="ghost"
-              arrow={isShowReviews ? 'down' : 'right'}>
+              arrow={isShowReviews ? 'down' : 'right'}
+              aria-expanded={isShowReviews}>
               Читать отзывы
             </Button>
           </li>

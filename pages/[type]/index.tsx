@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import { MenuItem } from '../../interfaces/menu.interface';
 import { withLayout } from '../../layout/Layout';
-import { Htag } from '../../components';
 import { firstLevelMenu } from '../../utils/template-menu';
 import { API } from '../../api/api';
 
@@ -14,11 +13,7 @@ interface TypeProps extends Record<string, unknown> {
 }
 
 const Type: NextPage<TypeProps> = ({ menu, firstCategory }): JSX.Element => {
-  return (
-    <div>
-      <Htag tag="h1">Type! {firstCategory}</Htag>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default withLayout(Type);

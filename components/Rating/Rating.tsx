@@ -7,15 +7,7 @@ import styles from './Rating.module.scss';
 
 export const Rating = React.forwardRef(
   (
-    {
-      rating,
-      isEditable = false,
-      setRating,
-      className,
-      nextFocusElementRef,
-      tabIndex,
-      ...props
-    }: RatingProps,
+    { rating, isEditable = false, setRating, className, tabIndex, error, ...props }: RatingProps,
     ref: ForwardedRef<HTMLUListElement>,
   ): JSX.Element => {
     const [ratingArr, setRatingArr] = React.useState<JSX.Element[]>(
@@ -63,11 +55,6 @@ export const Rating = React.forwardRef(
         setRating(rating > 1 ? rating - 1 : 1);
         ratingElemsRef.current[rating - 2]?.focus();
       }
-
-      if (e.code === 'Enter' || e.code === 'Space') {
-        e.preventDefault();
-        nextFocusElementRef?.current?.focus();
-      }
     };
 
     const calculateTabIndex = (rating: number, i: number) => {
@@ -96,7 +83,13 @@ export const Rating = React.forwardRef(
           onClick={() => setRatingWithMouse(i + 1)}
           onKeyDown={handleKey}
           tabIndex={calculateTabIndex(rating, i)}
-          ref={(r) => ratingElemsRef.current.push(r)}>
+          ref={(r) => ratingElemsRef.current.push(r)}
+          role={isEditable ? 'slider' : ''}
+          aria-valuenow={rating}
+          aria-valuemin={0}
+          aria-valuemax={5}
+          aria-label={isEditable ? 'Укажите рейтинг' : ''}
+          aria-invalid={error ? true : false}>
           <StarIcon
             className={cn(styles.star, {
               [styles.filled]: i < currentRating,

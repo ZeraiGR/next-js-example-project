@@ -1,36 +1,36 @@
 .rating {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .rate {
-  display: inline-flex;
+	display: inline-flex;
 
-  &.isEdit {
-    cursor: pointer;
-  }
+	&.isEdit {
+		cursor: pointer;
+	}
 
-  &:not(:last-child) svg {
-    margin-right: 5px;
-  }
+	&:not(:last-child) svg {
+		margin-right: 5px;
+	}
 
-  &.error {
-    svg {
-      stroke: var(--red);
-    }
-  }
+	&.error {
+		svg {
+			stroke: var(--red);
+		}
+	}
 
-  &:focus {
-    outline-color: var(--orange);
-  }
+	&:focus {
+		outline-color: var(--orange);
+	}
 }
 
 .star {
-  width: 20px;
-  height: 20px;
-  transition: fill 0.15s ease;
+	width: 20px;
+	height: 20px;
+	transition: fill 0.15s ease;
 
-  &.filled {
-    fill: var(--accent);
-  }
+	&.filled {
+		fill: var(--accent);
+	}
 }

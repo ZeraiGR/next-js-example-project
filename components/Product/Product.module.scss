@@ -1,379 +1,378 @@
 .grid {
-  padding: 30px 30px 20px;
-  display: grid;
-  grid-template-columns: [start] 70px [afterlogo] 30px [beforetitle] calc(50% - 100px) [middle] 1fr [pricestart] auto [beforprice] 40px [afterprice] auto [priceend] 1fr [beforerating] auto [end];
+	display: grid;
+	padding: 30px 30px 20px;
+	grid-template-columns: [start] 70px [afterlogo] 30px [beforetitle] calc(50% - 100px) [middle] 1fr [pricestart] auto [beforprice] 40px [afterprice] auto [priceend] 1fr [beforerating] auto [end];
 
-  @media (max-width: 1366px) {
-    grid-template-columns: 70px 30px auto 40px auto 40px auto;
-    grid-template-areas:
-      'logo . title title title title title'
-      'logo . tags tags tags tags tags'
-      '. . price . credit . rating'
-      '. . priceDescr . creditDescr . reviewCount'
-      'hr hr hr hr hr hr hr'
-      'description description description description description description description'
-      'characteristics characteristics characteristics characteristics characteristics characteristics characteristics'
-      'reviews reviews reviews reviews reviews reviews reviews'
-      'hr2 hr2 hr2 hr2 hr2 hr2 hr2'
-      'buttons buttons buttons buttons buttons buttons buttons';
+	@media (max-width: 1366px) {
+		grid-template-columns: 70px 30px auto 40px auto 40px auto;
+		grid-template-areas:
+			"logo . title title title title title"
+			"logo . tags tags tags tags tags"
+			". . price . credit . rating"
+			". . priceDescr . creditDescr . reviewCount"
+			"hr hr hr hr hr hr hr"
+			"description description description description description description description"
+			"characteristics characteristics characteristics characteristics characteristics characteristics characteristics"
+			"reviews reviews reviews reviews reviews reviews reviews"
+			"hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+			"buttons buttons buttons buttons buttons buttons buttons";
 
-    .schoolLogo {
-      grid-area: logo;
-    }
+		.schoolLogo {
+			grid-area: logo;
+		}
 
-    .title {
-      grid-area: title;
-    }
+		.title {
+			grid-area: title;
+		}
 
-    .tags {
-      grid-area: tags;
-    }
+		.tags {
+			grid-area: tags;
+		}
 
-    .price {
-      margin-top: 10px;
-      grid-area: price;
-      white-space: nowrap;
-    }
+		.price {
+			margin-top: 10px;
+			grid-area: price;
+			white-space: nowrap;
+		}
 
-    .priceDescr {
-      grid-area: priceDescr;
-    }
+		.priceDescr {
+			grid-area: priceDescr;
+		}
 
-    .credit {
-      grid-area: credit;
-      white-space: nowrap;
-    }
+		.credit {
+			grid-area: credit;
+			white-space: nowrap;
+		}
 
-    .creditDescr {
-      grid-area: creditDescr;
-    }
+		.creditDescr {
+			grid-area: creditDescr;
+		}
 
-    .rating {
-      grid-area: rating;
-    }
+		.rating {
+			grid-area: rating;
+		}
 
-    .reviewCount {
-      grid-area: reviewCount;
-    }
+		.reviewCount {
+			grid-area: reviewCount;
+		}
 
-    .headerDivider {
-      grid-area: hr;
-    }
+		.headerDivider {
+			grid-area: hr;
+		}
 
-    .btnsDivider {
-      grid-area: hr2;
-    }
+		.btnsDivider {
+			grid-area: hr2;
+		}
 
-    .description {
-      grid-area: description;
-    }
+		.description {
+			grid-area: description;
+		}
 
-    .characteristics {
-      margin-bottom: 20px;
-      grid-area: characteristics;
-    }
+		.characteristics {
+			margin-bottom: 20px;
+			grid-area: characteristics;
+		}
 
-    .reviews {
-      grid-area: reviews;
-    }
+		.reviews {
+			grid-area: reviews;
+		}
 
-    .buttons {
-      grid-area: buttons;
-    }
-  }
+		.buttons {
+			grid-area: buttons;
+		}
+	}
 
-  @media (max-width: 1024px) {
-    grid-template-columns: 70px 30px 1fr;
-    grid-template-areas:
-      'logo . title'
-      'logo . tags'
-      'priceDescr . price'
-      'creditDescr . credit'
-      'reviewCount . rating'
-      'hr hr hr'
-      'description description description'
-      'characteristics characteristics characteristics'
-      'reviews reviews reviews'
-      'hr2 hr2 hr2'
-      'buttons buttons buttons';
+	@media (max-width: 1024px) {
+		grid-template-columns: 70px 30px 1fr;
+		grid-template-areas:
+			"logo . title"
+			"logo . tags"
+			"priceDescr . price"
+			"creditDescr . credit"
+			"reviewCount . rating"
+			"hr hr hr"
+			"description description description"
+			"characteristics characteristics characteristics"
+			"reviews reviews reviews"
+			"hr2 hr2 hr2"
+			"buttons buttons buttons";
 
-    .priceDescr,
-    .creditDescr,
-    .reviewCount {
-      margin-top: 15px;
-    }
+		.priceDescr,
+		.creditDescr,
+		.reviewCount {
+			margin-top: 15px;
+		}
 
-    .price,
-    .credit,
-    .rating {
-      margin-top: 0;
-    }
-  }
+		.price,
+		.credit,
+		.rating {
+			margin-top: 0;
+		}
+	}
 
-  @media (max-width: 414px) {
-    grid-template-areas:
-      'logo . title'
-      'tags tags tags'
-      'priceDescr . price'
-      'creditDescr . credit'
-      'reviewCount . rating'
-      'hr hr hr'
-      'description description description'
-      'characteristics characteristics characteristics'
-      'reviews reviews reviews'
-      'hr2 hr2 hr2'
-      'buttons buttons buttons';
+	@media (max-width: 414px) {
+		grid-template-areas:
+			"logo . title"
+			"tags tags tags"
+			"priceDescr . price"
+			"creditDescr . credit"
+			"reviewCount . rating"
+			"hr hr hr"
+			"description description description"
+			"characteristics characteristics characteristics"
+			"reviews reviews reviews"
+			"hr2 hr2 hr2"
+			"buttons buttons buttons";
+		padding: 15px 10px 20px;
 
-    padding: 15px 10px 20px;
+		.priceDescr,
+		.creditDescr,
+		.reviewCount {
+			margin-top: 10px;
+		}
 
-    .priceDescr,
-    .creditDescr,
-    .reviewCount {
-      margin-top: 10px;
-    }
+		.title {
+			align-self: center;
+		}
 
-    .title {
-      align-self: center;
-    }
-
-    .tags {
-      margin-top: 5px;
-      margin-bottom: 15px;
-    }
-  }
+		.tags {
+			margin-top: 5px;
+			margin-bottom: 15px;
+		}
+	}
 }
 
 .schoolLogo {
-  position: relative;
-  grid-column: start / afterlogo;
-  grid-row: 1 / 3;
-  border-radius: 5px;
+	position: relative;
+	grid-column: start / afterlogo;
+	grid-row: 1 / 3;
+	border-radius: 5px;
 
-  img {
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--gray);
-      background-image: url('/plugImg.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      content: '';
-    }
-  }
+	img {
+		&::before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			content: "";
+			background-color: var(--gray);
+			background-image: url("/plugImg.jpg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+	}
 }
 
 .title,
 .tags {
-  grid-column: beforetitle / middle;
+	grid-column: beforetitle / middle;
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 600;
+	font-size: 20px;
+	font-weight: 600;
 
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
+	@media (max-width: 768px) {
+		font-size: 18px;
+	}
 }
 
 .price,
 .priceDescr {
-  grid-column: pricestart / beforprice;
+	grid-column: pricestart / beforprice;
 }
 
 .price {
-  gap: 8px;
-  font-size: 20px;
+	gap: 8px;
+	font-size: 20px;
 
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
+	@media (max-width: 768px) {
+		font-size: 18px;
+	}
 }
 
 .credit,
 .creditDescr {
-  grid-column: afterprice / priceend;
+	grid-column: afterprice / priceend;
 }
 
 .credit {
-  span {
-    line-height: 1.7;
-  }
+	span {
+		line-height: 1.7;
+	}
 }
 
 .rating,
 .reviewCount {
-  grid-column: beforerating / end;
+	grid-column: beforerating / end;
 }
 
 .reviewCount {
-  a {
-    color: var(--accent);
-  }
+	a {
+		color: var(--accent);
+	}
 }
 
 .tags {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 5px;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 5px;
 }
 
 .priceDescr,
 .creditDescr,
 .tags,
 .reviewCount {
-  grid-row: 2 / 3;
+	grid-row: 2 / 3;
 }
 
 .headerDivider,
 .btnsDivider {
-  grid-column: start / end;
+	grid-column: start / end;
 }
 
 .headerDivider {
-  grid-row: 3 / 4;
+	grid-row: 3 / 4;
 }
 
 .description {
-  margin-bottom: 14px;
-  grid-column: start / end;
-  grid-row: 4 / 5;
+	margin-bottom: 14px;
+	grid-column: start / end;
+	grid-row: 4 / 5;
 }
 
 .characteristics {
-  grid-column: start / middle;
+	grid-column: start / middle;
 }
 
 .reviews {
-  grid-column: pricestart / end;
+	grid-column: pricestart / end;
 }
 
 .characteristics,
 .reviews {
-  grid-row: 5 / 6;
+	grid-row: 5 / 6;
 }
 
 .btnsDivider {
-  grid-row: 7 / 8;
+	grid-row: 7 / 8;
 }
 
 .buttons {
-  grid-column: start / end;
-  grid-row: 9 / 10;
-  display: flex;
-  gap: 20px;
+	grid-column: start / end;
+	grid-row: 9 / 10;
+	display: flex;
+	gap: 20px;
 
-  @media (max-width: 414px) {
-    flex-direction: column;
-  }
+	@media (max-width: 414px) {
+		flex-direction: column;
+	}
 }
 
 .rating {
-  margin-top: auto;
-  height: 20px;
+	height: 20px;
+	margin-top: auto;
 }
 
 .title,
 .price,
 .credit,
 .rating {
-  margin-bottom: 6px;
-  line-height: 1.2;
-  display: flex;
-  align-self: flex-end;
+	display: flex;
+	align-self: flex-end;
+	margin-bottom: 6px;
+	line-height: 1.2;
 }
 
 .credit {
-  font-size: 20px;
+	font-size: 20px;
 
-  span {
-    font-size: 14px;
-  }
+	span {
+		font-size: 14px;
+	}
 
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
+	@media (max-width: 768px) {
+		font-size: 18px;
+	}
 }
 
 .priceDescr,
 .creditDescr,
 .reviewCount {
-  font-size: 14px;
-  font-weight: 300;
+	font-size: 14px;
+	font-weight: 300;
 }
 
 .charList {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .char {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  line-height: 1;
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	line-height: 1;
 
-  strong {
-    line-height: 1.4;
-  }
+	strong {
+		line-height: 1.4;
+	}
 
-  &:not(:last-child) {
-    margin-bottom: 15px;
-  }
+	&:not(:last-child) {
+		margin-bottom: 15px;
+	}
 }
 
 .dots {
-  margin: 0 15px;
-  flex-grow: 1;
-  border-bottom: 1px dashed #c4c4c4;
+	flex-grow: 1;
+	margin: 0 15px;
+	border-bottom: 1px dashed #c4c4c4;
 }
 
 .previlegies {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 5px;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 5px;
 }
 
 .advantages {
-  position: relative;
-  padding-left: 15px;
+	position: relative;
+	padding-left: 15px;
 
-  &::before {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 3px;
-    border-radius: 3px;
-    background-color: var(--green);
-    content: '';
-  }
+	&::before {
+		position: absolute;
+		left: 0;
+		width: 3px;
+		height: 100%;
+		content: "";
+		border-radius: 3px;
+		background-color: var(--green);
+	}
 
-  strong {
-    margin-bottom: 3px;
-    display: block;
-  }
+	strong {
+		display: block;
+		margin-bottom: 3px;
+	}
 }
 
 .revwrap {
-  overflow: hidden;
+	overflow: hidden;
 
-  &.opened {
-    overflow: visible;
-  }
+	&.opened {
+		overflow: visible;
+	}
 }
 
 .reviews {
-  padding: 30px;
-  transform: translateY(-5px);
+	padding: 30px;
+	transform: translateY(-5px);
 
-  @media (max-width: 414px) {
-    padding: 20px 10px;
-  }
+	@media (max-width: 414px) {
+		padding: 20px 10px;
+	}
 }

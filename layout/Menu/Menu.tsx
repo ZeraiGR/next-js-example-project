@@ -8,11 +8,12 @@ import { FirstLevelMenuItem, MenuItem } from '../../interfaces/menu.interface';
 import { Search } from '../../components';
 import { firstLevelMenu } from '../../utils/template-menu';
 import styles from './Menu.module.scss';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { MenuProps } from './Menu.props';
 
 export const Menu = ({ id }: MenuProps): JSX.Element => {
   const { menu, firstCategory, setMenu } = React.useContext(AppContext);
+  const shouldReduceMotion = useReducedMotion();
   const router = useRouter();
 
   const variants = {
@@ -32,16 +33,18 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
     show: {
       marginTop: 3,
       marginBottom: 10,
-      transition: {
-        when: 'beforeChildren',
-        staggerChildren: 0.1,
-      },
+      transition: shouldReduceMotion
+        ? {}
+        : {
+            when: 'beforeChildren',
+            staggerChildren: 0.1,
+          },
     },
   };
 
   const variantsChildren = {
     hidden: {
-      opacity: 0,
+      opacity: shouldReduceMotion ? 1 : 0,
       height: 0,
       marginBottom: 0,
     },
@@ -70,7 +73,8 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
         className={cn(styles.firstLevelItem, {
           [styles.active]: m.id === firstCategory,
         })}
-        key={m.route}>
+        key={m.route}
+        aria-expanded={m.id === firstCategory}>
         <>
           <div className={styles.firstLevelLabel}>
             {m.icon}
@@ -106,7 +110,8 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
             <button
               className={styles.link}
               type="button"
-              onClick={() => onChangeSecondMenu(item._id.secondCategory)}>
+              onClick={() => onChangeSecondMenu(item._id.secondCategory)}
+              aria-expanded={item.isOpen}>
               {item._id.secondCategory}
             </button>
             <motion.ul className={styles.thirdLevelMenu} variants={variantsMenuList}>
@@ -128,7 +133,10 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
           key={page._id}
           variants={variantsChildren}>
           <Link href={`/${route}/${page.alias}`}>
-            <a className={styles.link} tabIndex={isOpen ? 0 : -1}>
+            <a
+              className={styles.link}
+              tabIndex={isOpen ? 0 : -1}
+              aria-current={isActive ? 'page' : false}>
               {page.title}
             </a>
           </Link>
@@ -138,9 +146,9 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
   };
 
   return (
-    <div>
+    <nav role="navigation">
       <Search id={id} />
       <ul className={styles.menu}>{renderFirstLevelMenu()}</ul>
-    </div>
+    </nav>
   );
 };

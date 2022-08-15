@@ -1,21 +1,18 @@
 .layout {
   display: grid;
-  gap: 30px;
-  padding: 35px 20px 0;
-  grid-template-columns: auto 230px minmax(320px, 1200px) auto;
-  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  grid-template-areas:
-    '. header header .'
-    '. sidebar content .'
-    'footer footer footer footer';
+  padding: 35px 20px 0;
+  gap: 30px;
+  grid-template:
+    '. header header .' auto
+    '. sidebar content .' 1fr
+    'footer footer footer footer' auto / auto 230px minmax(320px, 1200px) auto;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'header'
-      'content'
-      'footer';
+    grid-template:
+      'header' auto
+      'content' 1fr
+      'footer' auto / 1fr;
   }
 }
 
@@ -42,15 +39,15 @@
 
 .skipLink {
   position: fixed;
-  display: block;
   top: 0;
   left: 12%;
-  border-radius: 4px;
-  background-color: var(--accent);
-  color: var(--white);
-  outline-color: var(--orange);
+  display: block;
   overflow: hidden;
   height: 0;
+  color: var(--white);
+  border-radius: 4px;
+  outline-color: var(--orange);
+  background-color: var(--accent);
 
   &.focused {
     height: auto;

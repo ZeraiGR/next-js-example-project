@@ -1,71 +1,71 @@
 :root {
-  --accent: #7351f5;
-  --accent-hover: #6e49fd;
-  --black: #3b434e;
-  --white-light: #f5f6f8;
-  --white: #ffffff;
-  --white-dark: #a4a4a4;
-  --gray-light: #ebebeb;
-  --gray: #787d85;
-  --gray-dark: #dfdfdf;
-  --red: #de0000;
-  --orange: #fc836d;
-  --orange--light: #f19a8b;
-  --green: #007a48;
-  --green--light: #c8f8e4;
-  --box-shadow: #0000000d;
-  --main-font: 'Noto Sans', sans-serif;
+	--accent: #7351f5;
+	--accent-hover: #6e49fd;
+	--black: #3b434e;
+	--white-light: #f5f6f8;
+	--white: #fff;
+	--white-dark: #a4a4a4;
+	--gray-light: #ebebeb;
+	--gray: #787d85;
+	--gray-dark: #dfdfdf;
+	--red: #de0000;
+	--orange: #fc836d;
+	--orange--light: #f19a8b;
+	--green: #007a48;
+	--green--light: #c8f8e4;
+	--box-shadow: #0000000d;
+	--main-font: "Noto Sans", sans-serif;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  border: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 *,
-*:before,
-*:after {
-  box-sizing: border-box;
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 body {
-  font-family: var(--main-font);
-  background-color: var(--white-light);
-  color: var(--black);
-  line-height: 1.7;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	color: var(--black);
+	background-color: var(--white-light);
+	font-family: var(--main-font);
+	line-height: 1.7;
+	text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 
-  &.fixed {
-    overflow: hidden;
-  }
+	&.fixed {
+		overflow: hidden;
+	}
 }
 
 input,
 button,
 textarea {
-  font-family: inherit;
-  font-size: inherit;
+	font-family: inherit;
+	font-size: inherit;
 }
 
 button {
-  cursor: pointer;
-  color: inherit;
-  background-color: inherit;
+	cursor: pointer;
+	color: inherit;
+	background-color: inherit;
 }
 
 ul {
-  li {
-    list-style: none;
-  }
+	li {
+		list-style: none;
+	}
 }
 
 img {
-  vertical-align: top;
+	vertical-align: top;
 }
 
 h1,
@@ -74,30 +74,30 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: inherit;
-  font-size: inherit;
+	font-size: inherit;
+	font-weight: inherit;
 }
 
 address {
-  font-style: inherit;
+	font-style: inherit;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 // helpers
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	white-space: nowrap;
+	border: 0;
+	clip-path: inset(100%);
 }

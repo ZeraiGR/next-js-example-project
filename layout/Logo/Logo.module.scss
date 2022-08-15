@@ -1,11 +1,11 @@
 .link {
-  display: flex;
-  align-items: center;
-  outline-color: var(--orange);
+	display: flex;
+	align-items: center;
+	outline-color: var(--orange);
 }
 
 .logoIcon {
-  &:focus-visible {
-    outline-color: var(--orange);
-  }
+	&:focus-visible {
+		outline-color: var(--orange);
+	}
 }
