@@ -1,4 +1,4 @@
-.firstLevelItem {
+.firstlevelitem {
 	&:not(:last-child) {
 		margin-bottom: 20px;
 	}
@@ -8,7 +8,7 @@
 	}
 }
 
-.firstLevelLabel {
+.firstlevellabel {
 	display: grid;
 	align-items: center;
 	margin-bottom: 15px;
@@ -32,13 +32,19 @@
 	}
 }
 
-.secondLevelMenu {
+.secondlevelmenu {
 	margin-left: 12px;
 	padding-left: 32px;
 	border-left: 1px solid var(--gray-dark);
 }
 
-.secondLevelItem {
+.thirdlevelmenu {
+	overflow: hidden;
+	margin-top: 3px;
+	margin-bottom: 10px;
+}
+
+.secondlevelitem {
 	button {
 		text-transform: uppercase;
 		color: var(--gray);
@@ -47,19 +53,13 @@
 	}
 
 	&.open {
-		.thirdLevelMenu {
+		.thirdlevelmenu {
 			display: block;
 		}
 	}
 }
 
-.thirdLevelMenu {
-	overflow: hidden;
-	margin-top: 3px;
-	margin-bottom: 10px;
-}
-
-.thirdLevelItem {
+.thirdlevelitem {
 	line-height: 1.3;
 
 	a {

@@ -119,30 +119,30 @@ export const ReviewForm = ({
       </div>
       {isSuccess && (
         <Panel type="success" role="alert">
-          <strong className={styles.successTitle}>Ваш отзыв успешно отправлен!</strong>
-          <p className={styles.succesDescr}>
+          <strong className={styles.successtitle}>Ваш отзыв успешно отправлен!</strong>
+          <p className={styles.succesdescr}>
             После того, как отзыв пройдёт модерацию, мы сможем его отобразить.
           </p>
           <button
-            className={styles.closeBtn}
+            className={styles.closebtn}
             type="button"
             aria-label={'Закрыть оповещение'}
             onClick={() => setIsSuccess(false)}>
-            <CloseIcon className={styles.closeIcon} />
+            <CloseIcon className={styles.closeicon} />
           </button>
         </Panel>
       )}
       {error && (
         <Panel type="error" role="alert">
-          <p className={styles.errorDescr}>
+          <p className={styles.errordescr}>
             Что-то пошло не так, попробуйте перезагрузить страницу
           </p>
           <button
-            className={styles.closeBtn}
+            className={styles.closebtn}
             type="button"
             aria-label="Закрыть оповещение"
             onClick={() => setIsSuccess(false)}>
-            <CloseIcon className={styles.closeIcon} />
+            <CloseIcon className={styles.closeicon} />
           </button>
         </Panel>
       )}

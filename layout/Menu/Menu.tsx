@@ -70,19 +70,19 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
   const renderFirstLevelMenu = () => {
     return firstLevelMenu.map((m) => (
       <li
-        className={cn(styles.firstLevelItem, {
+        className={cn(styles.firstlevelitem, {
           [styles.active]: m.id === firstCategory,
         })}
         key={m.route}
         aria-expanded={m.id === firstCategory}>
         <>
-          <div className={styles.firstLevelLabel}>
+          <div className={styles.firstlevellabel}>
             {m.icon}
             <Link href={`/${m.route}`}>
               <a className={styles.link}>{m.name}</a>
             </Link>
           </div>
-          <ul className={styles.secondLevelMenu}>
+          <ul className={styles.secondlevelmenu}>
             {m.id === firstCategory && renderSecondLevelMenu(m)}
           </ul>
         </>
@@ -100,7 +100,7 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
 
       return (
         <motion.li
-          className={cn(styles.secondLevelItem)}
+          className={cn(styles.secondlevelitem)}
           key={item._id.secondCategory}
           layout
           variants={variants}
@@ -114,7 +114,7 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
               aria-expanded={item.isOpen}>
               {item._id.secondCategory}
             </button>
-            <motion.ul className={styles.thirdLevelMenu} variants={variantsMenuList}>
+            <motion.ul className={styles.thirdlevelmenu} variants={variantsMenuList}>
               {renderThirdLevelMenu(item, firstMenuItem.route, item.isOpen ?? false)}
             </motion.ul>
           </>
@@ -129,7 +129,7 @@ export const Menu = ({ id }: MenuProps): JSX.Element => {
 
       return (
         <motion.li
-          className={cn(styles.thirdLevelItem, { [styles.active]: isActive })}
+          className={cn(styles.thirdlevelitem, { [styles.active]: isActive })}
           key={page._id}
           variants={variantsChildren}>
           <Link href={`/${route}/${page.alias}`}>

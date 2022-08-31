@@ -11,7 +11,7 @@ export const Input = React.forwardRef(
   ): JSX.Element => {
     return (
       <div className={cn(styles.field, className)}>
-        <input className={cn(styles.input, { [styles.inputError]: error })} ref={ref} {...props} />
+        <input className={cn(styles.input, { [styles.inputerror]: error })} ref={ref} {...props} />
         {error && (
           <span className={styles.error} role="alert">
             {error.message}

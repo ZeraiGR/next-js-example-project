@@ -7,6 +7,13 @@
   "plugins": ["stylelint-order"],
   "rules": {
     "indentation": ["tab"],
-    "color-hex-case": "lower"
+    "color-hex-case": "lower",
+    "max-line-length": [
+      true,
+      {
+        "limit": 150,
+        "ignore-pattern": "^import [^,]+ from |^export | implements"
+      }
+    ]
   }
 }

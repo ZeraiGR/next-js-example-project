@@ -10,9 +10,9 @@
 	--gray-dark: #dfdfdf;
 	--red: #de0000;
 	--orange: #fc836d;
-	--orange--light: #f19a8b;
+	--orange-light: #f19a8b;
 	--green: #007a48;
-	--green--light: #c8f8e4;
+	--green-light: #c8f8e4;
 	--box-shadow: #0000000d;
 	--main-font: "Noto Sans", sans-serif;
 }
@@ -34,8 +34,6 @@ body {
 	background-color: var(--white-light);
 	font-family: var(--main-font);
 	line-height: 1.7;
-	text-size-adjust: 100%;
-	text-size-adjust: 100%;
 	text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

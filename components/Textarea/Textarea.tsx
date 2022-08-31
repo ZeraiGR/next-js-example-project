@@ -12,7 +12,7 @@ export const Textarea = React.forwardRef(
     return (
       <div className={cn(styles.field, className)}>
         <textarea
-          className={cn(styles.textarea, { [styles.ErrorTextarea]: error })}
+          className={cn(styles.textarea, { [styles.errortextarea]: error })}
           ref={ref}
           {...props}
         />

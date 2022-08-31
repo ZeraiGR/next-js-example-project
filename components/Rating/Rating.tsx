@@ -77,7 +77,7 @@ export const Rating = React.forwardRef(
       const handledRatingArr = ratingArr.map((r: JSX.Element, i: number) => (
         <li
           key={i}
-          className={cn(styles.rate, { [styles.isEdit]: isEditable })}
+          className={cn(styles.rate, { [styles.isedit]: isEditable })}
           onMouseEnter={() => showRating(i + 1)}
           onMouseLeave={() => showRating(rating)}
           onClick={() => setRatingWithMouse(i + 1)}

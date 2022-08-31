@@ -75,12 +75,12 @@ export const TopPageComponent = ({ firstCategory, products, page }: TopPageCompo
       )}
 
       {page.seoText && (
-        <div className={styles.seoText} dangerouslySetInnerHTML={{ __html: page.seoText }} />
+        <div className={styles.seotext} dangerouslySetInnerHTML={{ __html: page.seoText }} />
       )}
 
       {page.tags && (
         <>
-          <Htag className={styles.tagTitle} tag="h2">
+          <Htag className={styles.tagtitle} tag="h2">
             Получаемые навыки
           </Htag>
           <ul className={styles.tags}>

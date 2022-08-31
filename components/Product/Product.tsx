@@ -32,7 +32,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
     tags,
     advantages,
     disadvantages,
-    reviewCount,
+    reviewcount,
     reviews,
   } = product;
   const [isShowReviews, setIsShowReviews] = React.useState<boolean>(false);
@@ -57,8 +57,8 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
   return (
     <article className={cn(className, styles.product)} {...props}>
       <Card className={styles.grid}>
-        <div className={styles.schoolLogo}>
-          <Image
+        <div className={styles.schoollogo}>
+          <img
             src={process.env.NEXT_PUBLIC_DOMAIN + image}
             alt={'School logo'}
             width={70}
@@ -109,27 +109,27 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
             ))}
         </ul>
 
-        <div className={styles.priceDescr} aria-hidden={true}>
+        <div className={styles.pricedescr} aria-hidden={true}>
           цена
         </div>
 
-        <div className={styles.creditDescr} aria-hidden={true}>
+        <div className={styles.creditdescr} aria-hidden={true}>
           в кредит
         </div>
 
-        <div className={styles.reviewCount}>
+        <div className={styles.reviewcount}>
           <a href="#ref" onClick={scrollToReview}>
-            {reviewCount} {declOfNum(reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+            {reviewcount} {declOfNum(reviewcount, ['отзыв', 'отзыва', 'отзывов'])}
           </a>
         </div>
 
-        <Divider className={styles.headerDivider} />
+        <Divider className={styles.headerdivider} />
 
         <div className={styles.description}>{description}</div>
 
         <div className={styles.characteristics}>
           {characteristics && (
-            <ul className={styles.charList}>
+            <ul className={styles.charlist}>
               {characteristics.map((char) => (
                 <li className={styles.char} key={char.name}>
                   <strong>{char.name}</strong>
@@ -168,7 +168,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
           )}
         </div>
 
-        <Divider className={styles.btnsDivider} />
+        <Divider className={styles.btnsdivider} />
 
         <ul className={styles.buttons}>
           <li>

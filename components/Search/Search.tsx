@@ -47,7 +47,7 @@ export const Search = ({ className, id, ...props }: SearchProps): JSX.Element =>
         aria-label="Поиск по сайту"
       />
       <Button
-        className={styles.btnIcon}
+        className={styles.btnicon}
         appearance="primary"
         type="button"
         aria-label="Искать по сайту"

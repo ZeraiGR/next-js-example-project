@@ -48,6 +48,6 @@ export interface ProductModel {
   companyId: string;
   clicks: number;
   reviews: ReviewModel[];
-  reviewCount: number;
+  reviewcount: number;
   reviewAvg: number;
 }

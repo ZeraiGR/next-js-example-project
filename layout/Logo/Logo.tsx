@@ -10,7 +10,7 @@ export const Logo = ({ className, ...props }: LogoProps): JSX.Element => {
   return (
     <Link href="/">
       <a className={cn(styles.link, className)}>
-        <LogoIcon className={cn(styles.logoIcon)} {...props} />
+        <LogoIcon className={cn(styles.logoicon)} {...props} />
       </a>
     </Link>
   );
